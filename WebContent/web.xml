@@ -26,6 +26,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- List the servlets -->
   
   <servlet>
     <servlet-name>index</servlet-name>
