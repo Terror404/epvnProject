@@ -14,8 +14,7 @@
     	<servlet-name>[nom du servlet]</servlet-name>
     	<url-pattern>[url possible]</url-pattern>
     	<url-pattern>[autre url si besoin]</url-pattern>
-  	</servlet-mapping>
-  
+  	</servlet-mapping>  
    -->
    
   
