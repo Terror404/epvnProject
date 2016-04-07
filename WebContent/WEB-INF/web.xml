@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>epvnProject</display-name>
-  
-  <!-- 
-  TO ADD A NEW SERVLET:
-  - <servlet>
-    	<servlet-name>[nom du servlet]</servlet-name>
-    	<servlet-class>[nom du package]</servlet-class>
-  	</servlet>
-  	
-  	<servlet-mapping>
-    	<servlet-name>[nom du servlet]</servlet-name>
-    	<url-pattern>[url possible]</url-pattern>
-    	<url-pattern>[autre url si besoin]</url-pattern>
-  	</servlet-mapping>
-  
-   -->
-  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -25,71 +9,13 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  <!-- List the servlets -->
-  
   <servlet>
-    <servlet-name>index</servlet-name>
-    <servlet-class>project.index</servlet-class>
+    <servlet-name>Index</servlet-name>
+    <servlet-class>controler.home.Index</servlet-class>
   </servlet>
-  
-  
   <servlet-mapping>
-    <servlet-name>index</servlet-name>
+    <servlet-name>Index</servlet-name>
     <url-pattern>/home</url-pattern>
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
-  
-  <!-- Added from work -->
-  
-  <context-param>
-		<param-name>contextConfigLocation</param-name>
- 		<param-value>/WEB-INF/applicationContext.xml</param-value> 
-	</context-param>
-		
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	
-	<servlet>
-		<servlet-name>dispatcher</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-	</servlet>
-  
-	<servlet-mapping>
-		<servlet-name>dispatcher</servlet-name>
-		<url-pattern>*.html</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>json</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-	</servlet>
-  
-	<servlet-mapping>
-		<servlet-name>json</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-        <servlet-name>CXFServlet</servlet-name>
-        <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>    
-    
-    <servlet-mapping>
-        <servlet-name>CXFServlet</servlet-name>
-        <url-pattern>/WebService/*</url-pattern>
-    </servlet-mapping>
-    
-    <!-- Servlet pour jasper report, permet de gérer les images lors de la génération html des rapports -->
-    <servlet>
-		<servlet-name>ImageServlet</servlet-name>
-        <servlet-class>net.sf.jasperreports.j2ee.servlets.ImageServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-	    <servlet-name>ImageServlet</servlet-name>
-        <url-pattern>/servlets/image</url-pattern>
-    </servlet-mapping>
 </web-app>
