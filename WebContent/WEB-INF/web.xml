@@ -27,21 +27,96 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- BACK OFFICE -->
   
   <servlet>
-    <servlet-name>index</servlet-name>
-    <servlet-class>project.index</servlet-class>
+    <servlet-name>BackOffice</servlet-name>
+    <servlet-class>controler.backoffice.BackOffice</servlet-class>
   </servlet>
   
+  <servlet-mapping>
+    <servlet-name>BackOffice</servlet-name>
+    <url-pattern>/backOffice</url-pattern>
+    <url-pattern>/backoffice</url-pattern>
+  </servlet-mapping>
+  
+  <!-- DONATION -->
+  
+  <servlet>
+    <servlet-name>CreateDonation</servlet-name>
+    <servlet-class>controler.donation.CreateDonation</servlet-class>
+  </servlet>
   
   <servlet-mapping>
-    <servlet-name>index</servlet-name>
+    <servlet-name>CreateDonation</servlet-name>
+    <url-pattern>/donation/create</url-pattern>
+    <url-pattern>/donation/do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- HOME -->
+  
+  <servlet>
+    <servlet-name>Index</servlet-name>
+    <servlet-class>controler.home.Index</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>Index</servlet-name>
     <url-pattern>/home</url-pattern>
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
+  
+  <!-- PROFILE -->
+  
+  <servlet>
+    <servlet-name>ConsultProfile</servlet-name>
+    <servlet-class>controler.profile.ConsultProfile</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ConsultProfile</servlet-name>
+    <url-pattern>/profile/consult</url-pattern>
+    <url-pattern>/profile/see</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ModifyProfile</servlet-name>
+    <servlet-class>controler.profile.ConsultProfile</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ModifyProfile</servlet-name>
+    <url-pattern>/profile/modify</url-pattern>
+    <url-pattern>/profile/edit</url-pattern>
+  </servlet-mapping>
+  
+  <!-- PROJECT -->  
+  
+  <servlet>
+    <servlet-name>ConsultProject</servlet-name>
+    <servlet-class>controler.project.ConsultProject</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ConsultProject</servlet-name>
+    <url-pattern>/project/consult</url-pattern>
+    <url-pattern>/project/Consult</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CreateOrModifyProject</servlet-name>
+    <servlet-class>controler.project.CreateOrModifyProject</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateOrModify</servlet-name>
+    <url-pattern>/project/create</url-pattern>
+    <url-pattern>/project/modify</url-pattern>
+  </servlet-mapping>
+  
+  
  
  
- <!-- Cant touch this dooouuuu doudoudou doudou doudoudou -->
+ <!-- Cant touch this dooouuuu doudoudou doudou doudoudou can't touch this -->
  <!-- 
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
