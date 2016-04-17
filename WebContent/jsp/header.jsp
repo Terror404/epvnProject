@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
 <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="./index.jsp"><img src="./img/logo_header.png" class="img-rounded" alt="Logo"></a>
+          <a href="./index.jsp"><img src="../img/logo_header.png" class="img-rounded" alt="Logo"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
