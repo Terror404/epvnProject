@@ -34,5 +34,6 @@
 	<classpathentry kind="lib" path="D:/spring-framework-4.2.5.RELEASE/libs/spring-webmvc-4.2.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="D:/spring-framework-4.2.5.RELEASE/libs/spring-webmvc-portlet-4.2.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="D:/spring-framework-4.2.5.RELEASE/libs/spring-websocket-4.2.5.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/lib/org.springframework.context.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
