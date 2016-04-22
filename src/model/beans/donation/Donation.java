@@ -17,7 +17,7 @@ public class Donation {
 	private String mailAddress;
 	private double value;
 	private String moneyType;
-	private Integer phoneNumber;
+	private String phoneNumber;
 	private Date submitDate;
 	private Project project;
 	private SubProject subProject;
@@ -70,10 +70,10 @@ public class Donation {
 	public void setMoneyType(String moneyType) {
 		this.moneyType = moneyType;
 	}
-	public Integer getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public Date getSubmitDate() {

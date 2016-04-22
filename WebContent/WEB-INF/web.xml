@@ -108,7 +108,7 @@
     <servlet-class>controler.project.CreateOrModifyProject</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CreateOrModify</servlet-name>
+    <servlet-name>CreateOrModifyProject</servlet-name>
     <url-pattern>/project/create</url-pattern>
     <url-pattern>/project/modify</url-pattern>
   </servlet-mapping>

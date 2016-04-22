@@ -35,5 +35,8 @@
 	<classpathentry kind="lib" path="D:/spring-framework-4.2.5.RELEASE/libs/spring-webmvc-portlet-4.2.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="D:/spring-framework-4.2.5.RELEASE/libs/spring-websocket-4.2.5.RELEASE.jar"/>
 	<classpathentry kind="lib" path="D:/lib/org.springframework.context.jar"/>
+	<classpathentry kind="lib" path="D:/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="D:/lib/hibernate-commons-annotations-5.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="D:/lib/org.springframework.core.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

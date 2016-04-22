@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -34,7 +35,7 @@
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Nom du projet">
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></button>
+          <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"/></button>
         </span>
       </div><!-- /input-group -->
       <div class="col-xs-12" style="height:50px;"></div>

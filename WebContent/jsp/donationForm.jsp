@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
+
+<script type="text/javascript">
+
+//functions for submit
+function createDonation(){
+	<c:url var="createDonation" value="/donationForm"/>
+	var donationForm = document.getElementById('createDonationForm');
+	donationForm.action="${createDonation}";
+	donationForm.submit();
+}
+
+</script>
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -16,11 +29,11 @@
 
   <body>
 
-	<jsp:include page="header.jsp" />
+	<%@ include file="/jsp/header.jsp" %>
 
     <div class="container">
       <h2><strong>Formulaire de don</strong></h2>
-      <form id="formid">
+      <form id="createDonationForm" modelAttribute="createDonation" method="POST" action="" enctype="mutlipart/form-data">
         <div class="form-group">
           <label for="typeDon">Type de don *</label>
           <select name="typeDon" id="typeDon" class="form-control">
@@ -114,7 +127,7 @@
         </div>
         </div>
 
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" onclick="createDonation();" class="btn btn-default">Submit</button>
       </form>
     </div> <!-- /container -->
     <!-- Bootstrap core JavaScript
