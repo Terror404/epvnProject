@@ -49,7 +49,7 @@
   
   <servlet-mapping>
     <servlet-name>CreateDonation</servlet-name>
-    <url-pattern>/donation/create</url-pattern>
+    <url-pattern>/donation/init</url-pattern>
     <url-pattern>/donation/do</url-pattern>
   </servlet-mapping>
   

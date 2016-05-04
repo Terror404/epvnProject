@@ -6,7 +6,10 @@ public class Project {
 	
 	private Integer idProject;
 	private String titleProject;
+	private String objectifDescription;
+	private String concernedPublic;
 	private String descriptionProject;
+	private String partnersProject;
 	private double goal;
 	private double actualAchievedGoal;
 	private String author;
@@ -66,6 +69,24 @@ public class Project {
 	}
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+	public String getObjectifDescription() {
+		return objectifDescription;
+	}
+	public void setObjectifDescription(String objectifDescription) {
+		this.objectifDescription = objectifDescription;
+	}
+	public String getConcernedPublic() {
+		return concernedPublic;
+	}
+	public void setConcernedPublic(String concernedPublic) {
+		this.concernedPublic = concernedPublic;
+	}
+	public String getPartnersProject() {
+		return partnersProject;
+	}
+	public void setPartnersProject(String partnersProject) {
+		this.partnersProject = partnersProject;
 	}
 	
 	
