@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="project" table="PROJECT">
+        <id name="id" type="java.lang.Integer" column="ID" length="11" />
+        
+        <property name="title" type="string">
+            <column name="TITLE" length="50" />
+        </property>
+        
+        <property name="description" type="string">
+            <column name="DESCRIPTION" length="255" />
+        </property>
+        
+        <property name="goal" type="java.lang.Integer">
+            <column name="GOAL" length="11" />
+        </property>
+        
+        <property name="actualAchievedGoal" type="java.lang.Integer">
+            <column name="ACTUAL_ACHIEVED_GOAL" length="11" />
+        </property>
+        
+        <property name="author" type="string">
+            <column name="AUTHOR" length="50" />
+        </property>
+        
+        <property name="idCategory" type="java.lang.Integer">
+            <column name="ID_CATEGORY" length="11" />
+        </property>
+        
+        <property name="beginDate" type="date">
+            <column name="BEGIN_DATE" />
+        </property>
+        
+        <property name="endDate" type="date">
+            <column name="END_DATE" />
+        </property>
+    </class>
+</hibernate-mapping>

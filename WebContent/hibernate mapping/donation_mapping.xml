@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="donation" table="DONATION">
+        <id name="id" type="java.lang.Integer" column="ID" length="11" />
+        
+        <property name="idType" type="java.lang.Integer">
+            <column name="ID_TYPE" length="11" />
+        </property>
+        
+        <property name="firstName" type="string">
+            <column name="FIRSTNAME" length="50" />
+        </property>
+        
+        <property name="lastName" type="string">
+            <column name="LASTNAME" length="50" />
+        </property>
+        
+        <property name="mail" type="string">
+            <column name="MAIL" length="50" />
+        </property>
+        
+        <!-- decimal wut -->
+        
+        <property name="value" type="java.lang.Decimal">
+            <column name="VALUE" length="50" />
+        </property>
+        
+        <property name="phone" type="java.lang.Integer">
+            <column name="PHONE" length="13" />
+        </property>
+        
+        <property name="submitDate" type="date">
+            <column name="SUBMIT_DATE" />
+        </property>
+        
+        <property name="comment" type="string">
+            <column name="ID_TYPE" length="50" />
+        </property>
+        
+        <property name="idProject" type="java.lang.Integer">
+            <column name="ID_PROJECT" length="11" />
+        </property>
+        
+        <property name="numberSubproject" type="java.lang.Integer">
+            <column name="NUMBER_SUBPROJECT" length="11" />
+        </property>
+        
+        <property name="address" type="string">
+            <column name="ADDRESS" length="50" />
+        </property>
+        
+        <property name="zipCode" type="java.lang.Integer">
+            <column name="ZIP_CODE" length="10" />
+        </property>
+        
+        <property name="city" type="string">
+            <column name="CITY" length="50" />
+        </property>
+        
+        <property name="country" type="string">
+            <column name="COUNTRY" length="50" />
+        </property>
+        
+        <property name="isCompanyInfos" type="java.lang.Integer">
+            <column name="ID_COMPANY_INFOS" length="11" />
+        </property>
+        
+        <property name="materialDonationPath" type="string">
+            <column name="MATERIAL_DONATION_PATH" length="50" />
+        </property>
+        
+        <property name="idUser" type="java.lang.Integer">
+            <column name="ID_USER" length="11" />
+        </property>
+    </class>
+</hibernate-mapping>
