@@ -63,7 +63,7 @@ public class CreateDonation extends HttpServlet {
 	public void InsertCreateDonation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		Donation donationForm = new Donation();
 		Boolean isMandatoryEmptyOrNull=false;
-		
+		System.out.println("-------------------------------------------------------------");
 		//TODO: controler les champs obligatoires
 		for(String param : request.getParameterMap().keySet()){
 			if(param!="phone"&& param!="subProject"){
@@ -72,6 +72,8 @@ public class CreateDonation extends HttpServlet {
 				}
 			}
 		}
+
+		System.out.println("-------------------------------------------------------------");
 		
 		if(isMandatoryEmptyOrNull){
 			RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/jsp/donationForm.jsp");
@@ -106,13 +108,16 @@ public class CreateDonation extends HttpServlet {
 			CompanyInfos companyInfos = new CompanyInfos();
 			//set every set of company infos	
 			companyInfos.setCompanyName(request.getParameter("companyName"));
-			
-			companyInfos.setSirenNum(Integer.parseInt(request.getParameter("sirenNum")));
-			companyInfos.setPhysicalAddress(request.getParameter("addressCompany"));
-			companyInfos.setZipCode(request.getParameter("zipCompany"));
-			companyInfos.setCity(request.getParameter("cityCompany"));
-			companyInfos.setCountry(request.getParameter("countryCompany"));
-			
+			if(request.getParameter("isCompany")!=null){
+				System.out.println("isCompany : true");
+				companyInfos.setSirenNum(Integer.parseInt(request.getParameter("sirenNum")));
+				companyInfos.setPhysicalAddress(request.getParameter("addressCompany"));
+				companyInfos.setZipCode(request.getParameter("zipCompany"));
+				companyInfos.setCity(request.getParameter("cityCompany"));
+				companyInfos.setCountry(request.getParameter("countryCompany"));
+			}else{
+				System.out.println("isCompany : false");
+			}
 			//add to file then put the path
 			String path = new String();
 			donationForm.setMaterialDonation(path);

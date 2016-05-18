@@ -95,7 +95,7 @@
         </div>
         <div class="form-group">
         	<label>Je suis une entreprise</label>
-	          <input type="checkbox" id="isCompany" name="isCompany" />
+	          <input type="checkbox" id="isCompany" name="isCompany" value="yes"/>
 	    </div>	        
         
 

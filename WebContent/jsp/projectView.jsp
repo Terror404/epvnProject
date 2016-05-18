@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -24,19 +23,40 @@
       <div class="row">
         <div class="col-md-8">
           <div>
-          <h2><strong>Titre du projet</strong></h2>
+	          <h2>
+	          	<strong>
+	          	<% 
+	            	String attribut = (String) request.getAttribute("projectTitle");
+	            	out.println( attribut );
+	            %>
+	            </strong>
+	          </h2>
           <div class="col-xs-12" style="height:20px;"></div>
           <div class="sub-container">
             <h3> Objectif du projet</h3>
-            <p> Description...</p>
+            <p> <% 
+	            	 attribut = (String) request.getAttribute("objectifProject");
+	            	out.println( attribut );
+	            %>
+	        </p>
           </div>
           <div class="sub-container">
             <h3>Public concerné</h3>
-            <p>Description...</p>
+            <p>
+            	<% 
+	            	 attribut = (String) request.getAttribute("concernedPublic");
+	            	out.println( attribut );
+	            %>
+			</p>
           </div>
           <div class="sub-container">
             <h3>Le Projet</h3>
-            <p>Description...</p>
+            <p>
+            	<% 
+	            	 attribut = (String) request.getAttribute("descriptionProject");
+	            	out.println( attribut );
+	            %>
+            </p>
           </div>
           <div class="sub-container">
             <h3>Sous-projets (si besoin)</h3>
@@ -51,7 +71,11 @@
           </div>
           <div class="sub-container">
             <h3>Partenaires du projet</h3>
-            <p>Description...</p>
+            <p><% 
+	            	 attribut = (String) request.getAttribute("partnersProject");
+	            	out.println( attribut );
+	            %>
+	        </p>
           </div>
           <div class="sub-container">
             <h3>Contact EVPN</h3>
@@ -67,9 +91,18 @@
           </div>
           <div class="col-xs-12" style="height:50px;"></div>
           <h3>Avancement du projet</h3>
-          <input type="text" value="69" class="dial">
+          <input type="text" value="<% 
+        		  double actualGoal =  Double.parseDouble((String)request.getAttribute("actualAchievedGoal"));
+      			  
+      			double finalGoal = Double.parseDouble((String)request.getAttribute("finalGoal"));
+            	out.println((actualGoal/finalGoal)*100);
+	            %>" class="dial">
           <div class="col-xs-12" style="height:20px;"></div>
-          <p><strong>Total des dons : 6900 / 10000 €</strong></p>
+          <p><strong>Total des dons : 
+          		<% 
+	            	out.println( actualGoal );
+	            	out.println( "/"+finalGoal+" euros");
+	            %></strong></p>
           <p>
             <a class="btn btn-lg formbtn" href="/epvnProject/donation/init" role="button">Soutenir ce projet</a>
           </p>
