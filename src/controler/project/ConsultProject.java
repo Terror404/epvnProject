@@ -43,14 +43,14 @@ public class ConsultProject extends HttpServlet {
 	public void init(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		Project projectToLoad = new Project();
 		//projectToLoad = projectDao.getProjectById();
-		
-		request.setAttribute("projectTitle","Dat title" );
-		request.setAttribute("objectifProject","Dat objectif" );
-		request.setAttribute("concernedPublic","Dat public" );
-		request.setAttribute("descriptionProject","Dat description" );
-		request.setAttribute("partnersProject","Dat partners" );
-		request.setAttribute("actualAchievedGoal","5299" );
-		request.setAttribute("finalGoal","10000" );
+		//List<SubProject> subProjects = subProjectDao.getListSubProjectsByProject(projectToLoad);
+		request.setAttribute("projectTitle",projectToLoad.getTitleProject());
+		request.setAttribute("objectifProject",projectToLoad.getObjectifDescription());
+		request.setAttribute("concernedPublic",projectToLoad.getConcernedPublic() );
+		request.setAttribute("descriptionProject",projectToLoad.getDescriptionProject() );
+		request.setAttribute("partnersProject",projectToLoad.getPartnersProject() );
+		request.setAttribute("actualAchievedGoal",Double.toString(projectToLoad.getActualAchievedGoal()));
+		request.setAttribute("finalGoal",Double.toString(projectToLoad.getGoal()));
 		System.out.println("done");
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/jsp/projectView.jsp");
 		dispatcher.include(request, response);

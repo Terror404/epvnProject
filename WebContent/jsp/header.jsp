@@ -30,7 +30,7 @@
             		<li><a href="./form.jsp">Parrainage</a></li>
           		</ul>
         	</li>
-        	<li><a href="./contact.jsp">Contact</a></li>
+        	<li><a href="/epvnProject/contact/consult">Contact</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

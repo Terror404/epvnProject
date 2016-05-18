@@ -11,7 +11,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
   </head>
   
   <body>
@@ -31,7 +31,7 @@
         </div>
         <div class="col-md-6">
           <div>
-            <img src="./img/map.png" class="img-rounded" alt="Responsive image">
+            <img src="../img/map.png" class="img-rounded" alt="Responsive image">
           </div>
         </div>
       </div>
