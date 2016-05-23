@@ -1,6 +1,8 @@
 package controler.project;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.beans.project.Project;
+import model.beans.project.SubProject;
 
 /**
  * Servlet implementation class ConsultProject
@@ -44,14 +47,25 @@ public class ConsultProject extends HttpServlet {
 		Project projectToLoad = new Project();
 		//projectToLoad = projectDao.getProjectById();
 		//List<SubProject> subProjects = subProjectDao.getListSubProjectsByProject(projectToLoad);
-		request.setAttribute("projectTitle",projectToLoad.getTitleProject());
-		request.setAttribute("objectifProject",projectToLoad.getObjectifDescription());
-		request.setAttribute("concernedPublic",projectToLoad.getConcernedPublic() );
-		request.setAttribute("descriptionProject",projectToLoad.getDescriptionProject() );
-		request.setAttribute("partnersProject",projectToLoad.getPartnersProject() );
-		request.setAttribute("actualAchievedGoal",Double.toString(projectToLoad.getActualAchievedGoal()));
-		request.setAttribute("finalGoal",Double.toString(projectToLoad.getGoal()));
-		System.out.println("done");
+		
+		//module a supprimer quand on aura la dao
+		List<SubProject> subProjects = new ArrayList<SubProject>();
+		SubProject subProject1 = new SubProject();
+		subProject1.setTitle("First Sub Project");
+		subProject1.setDescription("First Description");
+		SubProject subProject2 = new SubProject();
+		subProject2.setTitle("Second Sub Project");
+		subProject2.setDescription("Second Description");
+		subProjects.add(subProject1);
+		subProjects.add(subProject2);
+		//Fin du module a supprimer
+		
+		projectToLoad.setTitleProject("Mon titre");
+		projectToLoad.setActualAchievedGoal(1234.56);
+		projectToLoad.setGoal(7582.23);
+		projectToLoad.setSubProjectList(subProjects);
+		request.setAttribute("project",projectToLoad);
+		System.out.println("Log: Project init done");
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/jsp/projectView.jsp");
 		dispatcher.include(request, response);
 		

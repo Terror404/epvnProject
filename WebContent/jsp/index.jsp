@@ -12,12 +12,11 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
-    <script src="jquery.knob.js"></script>
+    <link href="./css/style.css" rel="stylesheet">
+    <script src="./js/jquery.knob.js"></script>
   </head>
 
   <body>
-  
 	<jsp:include page="header.jsp" />
 
     <div class="container">
@@ -37,53 +36,33 @@
           <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"/></button>
         </span>
       </div><!-- /input-group -->
-      <div class="col-xs-12" style="height:50px;"></div>
+      <div class="col-xs-12" style="height:30px;"></div>
 
       <section>
         <article>
           <div class="row">
-            <div class="col-md-4 project-item">
-              <div class="project-img">
-                <a href="./project.jsp"><img src="./img/img1.jpg" class="img-rounded" alt="Responsive image"></a>
-              </div>
-              <div class="col-xs-12" style="height:10px;"></div>
-              <div class="under-img-txt">
-                <div class="col-md-8">
-                  <div><a href="./project.jsp"><strong>Titre du projet...</strong></a></div>
-                  <span class="label label-success">Education</span>
-                  <span class="label label-success">Santé</span>
-                </div>
-                <input type="text" value="69" class="dial">
-              </div>
-            </div>
-            <div class="col-md-4 project-item">
-              <div class="project-img">
-                <a href="./project.jsp"><img src="./img/img1.jpg" class="img-rounded" alt="Responsive image"></a>
-              </div>
-              <div class="col-xs-12" style="height:10px;"></div>
-              <div class="under-img-txt">
-                <div class="col-md-8">
-                  <div><a href="./project.jsp"><strong>Titre du projet...</strong></a></div>
-                  <span class="label label-success">Education</span>
-                  <span class="label label-success">Santé</span>
-                </div>
-                <input type="text" value="69" class="dial">
-              </div>
-            </div>
-            <div class="col-md-4 project-item">
-              <div class="project-img">
-                <a href="./project.jsp"><img src="./img/img1.jpg" class="img-rounded" alt="Responsive image"></a>
-              </div>
-              <div class="col-xs-12" style="height:10px;"></div>
-              <div class="under-img-txt">
-                <div class="col-md-8">
-                  <div><a href="./project.jsp"><strong>Titre du projet...</strong></a></div>
-                  <span class="label label-success">Education</span>
-                  <span class="label label-success">Santé</span>
-                </div>
-                <input type="text" value="69" class="dial">
-              </div>
-            </div>
+          	<%@ page import="model.beans.project.Project"%>
+          	<%@ page import="java.util.ArrayList"%>
+          	<% ArrayList<Project> collec =  (ArrayList<Project>) request.getAttribute("projectsList");
+          	   for(Project project : collec) { %>
+          		<div class="col-md-4 project-item">
+	             <div class="project-img">
+	               <a href="./project.jsp"><img src="./img/img1.jpg" class="img-rounded" alt="Responsive image"></a>
+	             </div>
+	             <div class="col-xs-12" style="height:10px;"></div>
+	             <div class="under-img-txt">
+	               <div class="col-md-8">
+	                 <div><a href="./project.jsp">
+	                 	<strong>
+	                 		<% out.println(project.getTitleProject()); %>
+	     				</strong></a></div>
+	                 <span class="label label-success">Education</span>
+	                 <span class="label label-success">Santé</span>
+	               </div>
+	               <input type="text" data-width="30%" value="<% out.println(project.getActualAchievedGoal()/project.getGoal()*100); %>" class="dial">
+	             </div>
+	           </div>
+          	<% } %>
           </div>
         </article>
         <div class="col-xs-12" style="height:20px;"></div>
@@ -98,8 +77,6 @@
     <script>
     $(function() {
         $(".dial").knob({
-          'width' : 75,
-          'height' : 75,
           'fgColor' : '#6cb874',
           'inputColor' : '#6cb874',
           'readOnly' : true,

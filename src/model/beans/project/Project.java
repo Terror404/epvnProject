@@ -1,6 +1,7 @@
 package model.beans.project;
 
 import java.util.Date;
+import java.util.List;
 
 public class Project {
 	
@@ -16,6 +17,7 @@ public class Project {
 	private CategoryProject categoryProject;
 	private Date beginDate;
 	private Date endDate;
+	private List<SubProject> subProjectList;
 	public Integer getIdProject() {
 		return idProject;
 	}
@@ -87,6 +89,12 @@ public class Project {
 	}
 	public void setPartnersProject(String partnersProject) {
 		this.partnersProject = partnersProject;
+	}
+	public List<SubProject> getSubProjectList() {
+		return subProjectList;
+	}
+	public void setSubProjectList(List<SubProject> subProjectList) {
+		this.subProjectList = subProjectList;
 	}
 	
 	

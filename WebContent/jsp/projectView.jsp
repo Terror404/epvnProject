@@ -25,9 +25,12 @@
           <div>
 	          <h2>
 	          	<strong>
+	          	<%@page import="model.beans.project.Project" %>
+	          	<%@page import="model.beans.project.SubProject" %>
 	          	<% 
-	            	String attribut = (String) request.getAttribute("projectTitle");
-	            	out.println( attribut );
+	            	Project project = (Project) request.getAttribute("project");
+    				out.println(project.getTitleProject());
+	            	//out.println( attribut );
 	            %>
 	            </strong>
 	          </h2>
@@ -35,8 +38,7 @@
           <div class="sub-container">
             <h3> Objectif du projet</h3>
             <p> <% 
-	            	 attribut = (String) request.getAttribute("objectifProject");
-	            	out.println( attribut );
+	            	out.println( project.getObjectifDescription() );
 	            %>
 	        </p>
           </div>
@@ -44,8 +46,7 @@
             <h3>Public concerné</h3>
             <p>
             	<% 
-	            	 attribut = (String) request.getAttribute("concernedPublic");
-	            	out.println( attribut );
+            		out.println( project.getConcernedPublic() );
 	            %>
 			</p>
           </div>
@@ -53,27 +54,28 @@
             <h3>Le Projet</h3>
             <p>
             	<% 
-	            	 attribut = (String) request.getAttribute("descriptionProject");
-	            	out.println( attribut );
+            		out.println( project.getDescriptionProject() );
 	            %>
             </p>
           </div>
-          <div class="sub-container">
-            <h3>Sous-projets (si besoin)</h3>
-            <div class="sub-sub-container">
-              <h4>Nom du 1er sous-projet</h4>
-              <p>Description...</p>
-            </div>
-            <div class="sub-sub-container">
-              <h4>Nom du 2ème sous-projet</h4>
-              <p>Description...</p>
-            </div>
-          </div>
+          <% if(project.getSubProjectList()!=null){
+        	  out.println("<div class=\"sub-container\">"+
+        			  "<h3>Sous-projets</h3>"        			  
+          );
+        	  for(SubProject subProject : project.getSubProjectList()){
+        		  out.println("<div class=\"sub-sub-container\">"+
+                  "<h4>"+subProject.getTitle()+"</h4>"+
+                  "<p>"+subProject.getDescription()+"</p>"+
+                "</div>");
+        	  }
+        	  out.println("</div>");
+          }
+          %>
+          
           <div class="sub-container">
             <h3>Partenaires du projet</h3>
             <p><% 
-	            	 attribut = (String) request.getAttribute("partnersProject");
-	            	out.println( attribut );
+	            	out.println( project.getPartnersProject() );
 	            %>
 	        </p>
           </div>
@@ -91,17 +93,14 @@
           </div>
           <div class="col-xs-12" style="height:50px;"></div>
           <h3>Avancement du projet</h3>
-          <input type="text" value="<% 
-        		  double actualGoal =  Double.parseDouble((String)request.getAttribute("actualAchievedGoal"));
-      			  
-      			double finalGoal = Double.parseDouble((String)request.getAttribute("finalGoal"));
-            	out.println((actualGoal/finalGoal)*100);
+          <input type="text" value="<%
+          out.println((project.getActualAchievedGoal()/project.getGoal())*100);
 	            %>" class="dial">
           <div class="col-xs-12" style="height:20px;"></div>
           <p><strong>Total des dons : 
           		<% 
-	            	out.println( actualGoal );
-	            	out.println( "/"+finalGoal+" euros");
+	            	out.println( project.getActualAchievedGoal() );
+	            	out.println( "/"+project.getGoal()+" euros");
 	            %></strong></p>
           <p>
             <a class="btn btn-lg formbtn" href="/epvnProject/donation/init" role="button">Soutenir ce projet</a>
