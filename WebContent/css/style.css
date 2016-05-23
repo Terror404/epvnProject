@@ -80,3 +80,6 @@ nav .container {
   border-bottom: 0px solid #c55475;
   border-radius: 10px 10px 0 0;
 }
+.project-item {
+  margin-top: 20px;
+}

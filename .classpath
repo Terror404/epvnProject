@@ -36,6 +36,6 @@
 	<classpathentry kind="lib" path="D:/Eclipse/Workspace/lib epvn/org-apache-ws-commons-util.jar"/>
 	<classpathentry kind="lib" path="D:/Eclipse/Workspace/lib epvn/org-apache-xml-resolver.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/clem0/git/jar/sqlite-jdbc-3.8.11.2.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/Workspace/lib epvn/sqlite-jdbc-3.8.11.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
