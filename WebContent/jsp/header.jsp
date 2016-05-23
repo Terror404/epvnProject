@@ -7,7 +7,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="./index.jsp"><img src="../img/logo_header.png" class="img-rounded" alt="Logo"></a>
+          <a href="/epvnProject/index"><img src="/epvnProject/img/logo_header.png" class="img-rounded" alt="Logo"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -17,7 +17,7 @@
             <li class="dropdown">
           		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nos actions <span class="caret"></span></a>
           		<ul class="dropdown-menu">
-            		<li><a href="./index.jsp">Nos projets</a></li>
+            		<li><a href="/epvnProject/index">Nos projets</a></li>
             		<li><a href="./events.jsp">Nos évènements</a></li>
           		</ul>
         	</li>
