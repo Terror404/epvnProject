@@ -12,8 +12,8 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- Custom styles for this template -->
-    <link href="./css/style.css" rel="stylesheet">
-    <script src="./js/jquery.knob.js"></script>
+    <link href="../css/style.css" rel="stylesheet">
+    <script src="../js/jquery.knob.js"></script>
   </head>
 
   <body>
@@ -23,7 +23,7 @@
       <h2><strong>Faire un don à l'association</strong></h2>
       <p>Des explications...</p>
       <p class="align-center">
-        <a class="btn btn-lg formbtn" href="./form.html" role="button">Formulaire de don</a>
+        <a class="btn btn-lg formbtn" href="../donation/init" role="button">Formulaire de don</a>
       </p>
     </div> <!-- /container -->
 
@@ -47,7 +47,7 @@
           	   for(Project project : collec) { %>
           		<div class="col-md-4 project-item">
 	             <div class="project-img">
-	               <a href="./project.jsp"><img src="./img/img1.jpg" class="img-rounded" alt="Responsive image"></a>
+	               <a href="../project/consult"><img src="../img/img1.jpg" class="img-rounded" alt="Responsive image"></a>
 	             </div>
 	             <div class="col-xs-12" style="height:10px;"></div>
 	             <div class="under-img-txt">

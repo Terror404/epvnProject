@@ -33,8 +33,8 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Index</servlet-name>
-    <url-pattern>/home</url-pattern>
-    <url-pattern>/index</url-pattern>
+    <url-pattern>/home/init</url-pattern>
+    <url-pattern>/index/init</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>ConsultProfile</servlet-name>
@@ -70,6 +70,24 @@
     <servlet-name>ConsultProject</servlet-name>
     <url-pattern>/project/consult</url-pattern>
     <url-pattern>/project/Consult</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>EventsIndex</servlet-name>
+    <servlet-class>controler.events.Events</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EventsIndex</servlet-name>
+    <url-pattern>/events/init</url-pattern>
+    <url-pattern>/events/consult</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ConsultEvent</servlet-name>
+    <servlet-class>controler.events.EventConsult</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConsultEvent</servlet-name>
+    <url-pattern>/event/init</url-pattern>
+    <url-pattern>/event/consult</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>CreateOrModifyProject</servlet-name>

@@ -11,8 +11,8 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
-    <script src="jquery.knob.js"></script>
+    <link href="../css/style.css" rel="stylesheet">
+    <script src="../js/jquery.knob.js"></script>
   </head>
 
   <body>
@@ -35,31 +35,31 @@
           <div class="row">
             <div class="col-md-4 project-item">
               <div class="project-img">
-                <a href="./event.jsp"><img src="./img/event.png" class="img-rounded" alt="Responsive image"></a>
+                <a href="../event/consult"><img src="../img/event.png" class="img-rounded" alt="Responsive image"></a>
               </div>
               <div class="col-xs-12" style="height:10px;"></div>
               <div class="under-img-txt">
-                <div class="align-center"><a href="./event.html"><strong>Titre de l'évènement...</strong></a></div>
+                <div class="align-center"><a href="../event/consult"><strong>Titre de l'évènement...</strong></a></div>
                 <div><p>Description...</p></div>
               </div>
             </div>
             <div class="col-md-4 project-item">
               <div class="project-img">
-                <a href="./event.jsp"><img src="./img/event.png" class="img-rounded" alt="Responsive image"></a>
+                <a href="../event/consult"><img src="../img/event.png" class="img-rounded" alt="Responsive image"></a>
               </div>
               <div class="col-xs-12" style="height:10px;"></div>
               <div class="under-img-txt">
-                <div class="align-center"><a href="./event.html"><strong>Titre de l'évènement...</strong></a></div>
+                <div class="align-center"><a href="../event/consult"><strong>Titre de l'évènement...</strong></a></div>
                 <div><p>Description...</p></div>
               </div>
             </div>
             <div class="col-md-4 project-item">
               <div class="project-img">
-                <a href="./event.jsp"><img src="./img/event.png" class="img-rounded" alt="Responsive image"></a>
+                <a href="../event/consult"><img src="../img/event.png" class="img-rounded" alt="Responsive image"></a>
               </div>
               <div class="col-xs-12" style="height:10px;"></div>
               <div class="under-img-txt">
-                <div class="align-center"><a href="./event.html"><strong>Titre de l'évènement...</strong></a></div>
+                <div class="align-center"><a href="../event/consult"><strong>Titre de l'évènement...</strong></a></div>
                 <div><p>Description...</p></div>
               </div>
             </div>

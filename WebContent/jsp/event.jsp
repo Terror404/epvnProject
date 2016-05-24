@@ -12,8 +12,8 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
-    <script src="jquery.knob.js"></script>
+    <link href="../css/style.css" rel="stylesheet">
+    <script src="../js/jquery.knob.js"></script>
   </head>
 
   <body>
@@ -44,12 +44,12 @@
             <div class="row">
             <div class="col-md-6 project-item">
               <div class="project-img">
-                <a href="./project.jsp"><img src="./img/img1.jpg" class="img-rounded" alt="Responsive image"></a>
+                <a href="../project/consult"><img src="../img/img1.jpg" class="img-rounded" alt="Responsive image"></a>
               </div>
               <div class="col-xs-12" style="height:10px;"></div>
               <div class="under-img-txt">
                 <div class="col-md-8">
-                  <div><a href="./project.jsp"><strong>Titre du projet...</strong></a></div>
+                  <div><a href="../project/consult"><strong>Titre du projet...</strong></a></div>
                   <span class="label label-success">Education</span>
                   <span class="label label-success">Santé</span>
                 </div>
@@ -72,7 +72,7 @@
           <div style="text-align:center">
           <div class="col-xs-12" style="height:15px;"></div>
           <div>
-            <img src="./img/event.png" class="img-rounded" alt="Responsive image">
+            <img src="../img/event.png" class="img-rounded" alt="Responsive image">
           </div>
           <div class="col-xs-12" style="height:50px;"></div>
           <h3>Tarification</h3>
@@ -82,7 +82,7 @@
           </p>
           <div class="col-xs-12" style="height:50px;"></div>
           <div>
-            <img src="./img/map.png" class="img-rounded" alt="Responsive image">
+            <img src="../img/map.png" class="img-rounded" alt="Responsive image">
           </div>
           </div>
         </div>
