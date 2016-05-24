@@ -134,11 +134,11 @@
         <div class="toggle-company" style="display:none">
         <div class="form-group">
           <label for="companyName">Nom de l'entreprise *</label>
-          <input type="text" class="form-control" name="companyName" value="20" disabled/>
+          <input type="text" class="form-control" name="companyName" />
         </div>
         <div class="form-group">
           <label for="sirenNum">Numero de Siren *</label>
-          <input type="text" class="form-control" name="sirenNum" value="20" disabled/>
+          <input type="text" class="form-control" name="sirenNum" />
         </div>
         <div class="form-group">
           <label for="adress">Adresse *</label>
@@ -217,4 +217,4 @@ function createDonation(){
 
 </script>
      </body>
-</html>  
+</html> 
