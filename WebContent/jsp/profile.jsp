@@ -11,8 +11,8 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
-    <script src="jquery.knob.js"></script>
+    <link href="../css/style.css" rel="stylesheet">
+    <script src="../js/jquery.knob.js"></script>
   </head>
 
   <body>
@@ -47,10 +47,10 @@
           <article>
             <div class="row">
               <div class="col-md-3">
-                <a href=""><img src="./img/img1.jpg" class="img-rounded" alt="Responsive image"></a>
+                <a href="../project/consult"><img src="../img/img1.jpg" class="img-rounded" alt="Responsive image"></a>
               </div>
               <div class="col-md-6">
-                <a href="./project.html"><h3>Parrainage collectif des enfants atteints du VIH de l’orphelinat de Bac Giang</h3></a>
+                <a href="../project/consult"><h3>Parrainage collectif des enfants atteints du VIH de l’orphelinat de Bac Giang</h3></a>
                 <p>Type de projet : éducation et santé</p>
                 <p>Localisation : Bac Giang, province de Bac Giang</p>
                 <p>Durée globale : 2010 – 2020</p>
@@ -66,10 +66,10 @@
           <article>
             <div class="row">
               <div class="col-md-3">
-                <a href=""><img src="./img/img1.jpg" class="img-rounded" alt="Responsive image"></a>
+                <a href="../project/consult"><img src="../img/img1.jpg" class="img-rounded" alt="Responsive image"></a>
               </div>
               <div class="col-md-6">
-                <a href="./project.html"><h3>Parrainage collectif des enfants atteints du VIH de l’orphelinat de Bac Giang</h3></a>
+                <a href="../project/consult"><h3>Parrainage collectif des enfants atteints du VIH de l’orphelinat de Bac Giang</h3></a>
                 <p>Type de projet : éducation et santé</p>
                 <p>Localisation : Bac Giang, province de Bac Giang</p>
                 <p>Durée globale : 2010 – 2020</p>

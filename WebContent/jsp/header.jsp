@@ -7,7 +7,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="../index/init"><img src="/epvnProject/img/logo_header.png" class="img-rounded" alt="Logo"></a>
+          <a href="../index/init"><img src="../img/logo_header.png" class="img-rounded" alt="Logo"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -41,7 +41,7 @@
 function createDonationInit(){
 	
 	var donationForm = document.getElementById('createDonationInit');
-	var createDonation = "/epvnProject/donation/init";
+	var createDonation = "../donation/init";
 	console.log("yes");
 	donationForm.action= createDonation;
 	donationForm.submit();

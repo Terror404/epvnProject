@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 body {
   /*min-height: 2000px;*/
   padding-top: 70px;
@@ -29,7 +29,9 @@ nav .container {
 .container {
   width: 60%;
   background-color: #f8f8f8;
+  
 }
+
 #signdiv {
   border-right: 1px solid inherit;
   box-shadow: 5px 0 5px -5px #c55475;
@@ -84,90 +86,3 @@ nav .container {
 .project-item {
   margin-top: 20px;
 }
-=======
-body {
-  /*min-height: 2000px;*/
-  padding-top: 70px;
-}
-img {
-	max-width: 100%;
-	height: auto;
-}
-a {
-  text-decoration: none;
-  color:inherit;
-}
-a:hover {
-  text-decoration: none;
-  color:inherit;
-}
-strong {
-  color: #c55475;
-}
-h3 {
-  font-weight: bold;
-  border-bottom: 1px solid inherit;
-  box-shadow: 0 5px 5px -5px #cccccc;
-}
-nav .container {
-  background-color: #f8f8f8;
-}
-.container {
-  width: 60%;
-  background-color: #f8f8f8;
-}
-#signdiv {
-  border-right: 1px solid inherit;
-  box-shadow: 5px 0 5px -5px #c55475;
-}
-.log_title {
-  text-align: center;
-}
-.formbtn {
-  background-color: #c55475;
-  color: white;
-}
-.formbtn:hover {
-  background-color: #d9534f;
-  color: white;
-}
-.navbtn {
-  background-color: #c55475;
-  padding-left: 50px;
-}
-.navbtn:hover {
-  background-color: white;
-  border-color: #f8f8f8;
-  color:#FC6D6D;
-}
-#nava {
-  color:white;
-}
-#nava:hover {
-  color:#FC6D6D;
-}
-.sub-container h3 {
-  color: #FC6D6D;
-}
-.sub-sub-container {
-  background-color:#EAEAEA;
-  border-radius: 5px;
-  padding: 0px 5px 5px 5px;
-}
-.align-center {
-  text-align: center;
-}
-.under-img-txt {
-  border: 1px solid #c55475;
-  border-top: 0px solid #c55475;
-  border-radius: 0 0 10px 10px;
-}
-.project-img {
-  border: 1px solid #c55475;
-  border-bottom: 0px solid #c55475;
-  border-radius: 10px 10px 0 0;
-}
-.project-item {
-  margin-top: 20px;
-}
->>>>>>> branch 'master' of https://github.com/Terror404/epvnProject.git
