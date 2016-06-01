@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+
 /**
  * Servlet implementation class ConsultProfile
  */
@@ -21,7 +24,6 @@ public class ConsultProfile extends HttpServlet {
      */
     public ConsultProfile() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

@@ -1,7 +1,9 @@
 package controler.donation;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -55,6 +57,26 @@ public class CreateDonation extends HttpServlet {
 	public void Init(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		//TODO:si un user est connecté, rentrer ses informations par défaut
 		//TODO:récupérer la page projet dont l'on vient pour renseigner les champs par défaut
+		
+		// à supprimer quand les dao sont pretes
+		Project project = new Project();
+		project.setIdProject(20);
+		project.setTitleProject("mytitel");
+		List<SubProject> subProjects = new ArrayList<SubProject>();
+		SubProject subProject1 = new SubProject();
+		subProject1.setTitle("First Sub Project");
+		subProject1.setDescription("First Description");
+		SubProject subProject2 = new SubProject();
+		subProject2.setTitle("Second Sub Project");
+		subProject2.setDescription("Second Description");
+		subProjects.add(subProject1);
+		subProjects.add(subProject2);
+		project.setSubProjectList(subProjects);
+		//fin de à supprimer
+		
+		
+		
+		request.setAttribute("project",project);
 		System.out.println("init done");
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/jsp/donationForm.jsp");
 		dispatcher.include(request, response);
@@ -63,26 +85,15 @@ public class CreateDonation extends HttpServlet {
 	public void InsertCreateDonation(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		Donation donationForm = new Donation();
 		Boolean isMandatoryEmptyOrNull=false;
-		System.out.println("-------------------------------------------------------------");
-		//TODO: controler les champs obligatoires
-		for(String param : request.getParameterMap().keySet()){
-			if(param!="phone"&& param!="subProject"){
-				if(request.getParameter(param)==null||"".equals(request.getParameter(param))){
-					isMandatoryEmptyOrNull=true;
-				}
-			}
-		}
-
-		System.out.println("-------------------------------------------------------------");
 		
 		if(isMandatoryEmptyOrNull){
 			RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/jsp/donationForm.jsp");
 			dispatcher.include(request, response);
 		}else{
-			System.out.println("all is fine");
-			//get the type donation from id
+			System.out.println("Donation begin");
+			//TODO : get the type donation from id
 			TypeDonation typeDonation = new TypeDonation();
-			//typeDonation = typeDonationDAO.getTypeDonationById();
+			//TODO : typeDonation = typeDonationDAO.getTypeDonationById();
 			donationForm.setTypeDonation(typeDonation);
 			donationForm.setFirstName(request.getParameter("firstname"));
 			donationForm.setLastName(request.getParameter("lastname"));
@@ -90,7 +101,6 @@ public class CreateDonation extends HttpServlet {
 			if(request.getParameter("amount")!=null && ! "".equals(request.getParameter("amount"))){
 				donationForm.setValue(Double.parseDouble(request.getParameter("amount")));
 			}
-			donationForm.setMoneyType(request.getParameter("moneytype"));
 			donationForm.setPhoneNumber(request.getParameter("phone"));
 			donationForm.setSubmitDate(new Date());
 			
