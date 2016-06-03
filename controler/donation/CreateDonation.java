@@ -61,16 +61,18 @@ public class CreateDonation extends HttpServlet {
 		// à supprimer quand les dao sont pretes
 		Project project = new Project();
 		project.setIdProject(20);
-		project.setTitleProject("mytitel");
+		project.setTitleProject("My title");
 		List<SubProject> subProjects = new ArrayList<SubProject>();
 		SubProject subProject1 = new SubProject();
 		subProject1.setTitle("First Sub Project");
 		subProject1.setDescription("First Description");
+		subProject1.setIdSubProject(1);
 		SubProject subProject2 = new SubProject();
 		subProject2.setTitle("Second Sub Project");
 		subProject2.setDescription("Second Description");
 		subProjects.add(subProject1);
 		subProjects.add(subProject2);
+		subProject2.setIdSubProject(2);
 		project.setSubProjectList(subProjects);
 		//fin de à supprimer
 		
@@ -92,42 +94,73 @@ public class CreateDonation extends HttpServlet {
 		}else{
 			System.out.println("Donation begin");
 			//TODO : get the type donation from id
-			TypeDonation typeDonation = new TypeDonation();
-			//TODO : typeDonation = typeDonationDAO.getTypeDonationById();
-			donationForm.setTypeDonation(typeDonation);
-			donationForm.setFirstName(request.getParameter("firstname"));
-			donationForm.setLastName(request.getParameter("lastname"));
+			String typeDonation = new String();
+			typeDonation = request.getParameter("typeDon");
+			
+			//BEGIN DONATION CREATION
+			
+			//set the address
+			donationForm.setAddress(request.getParameter("address"));
+			donationForm.setZipCode(request.getParameter("zip"));
+			donationForm.setCity(request.getParameter("city"));
 			donationForm.setMailAddress(request.getParameter("email"));
+			donationForm.setPhoneNumber(request.getParameter("phone"));
 			if(request.getParameter("amount")!=null && ! "".equals(request.getParameter("amount"))){
 				donationForm.setValue(Double.parseDouble(request.getParameter("amount")));
 			}
-			donationForm.setPhoneNumber(request.getParameter("phone"));
+			System.out.println(request.getParameter("address"));
+			System.out.println(request.getParameter("zip"));
+			System.out.println(request.getParameter("email"));
+			System.out.println(request.getParameter("city"));
+			System.out.println(request.getParameter("phone"));
+			System.out.println(Double.parseDouble(request.getParameter("amount")));
+			
+			if(request.getParameter("isCompany")!=null){
+				//if it is a company
+				donationForm.setFirstName(null);
+				donationForm.setLastName(null);
+				
+				//logs
+				System.out.println("isCompany part:");
+				System.out.print(request.getParameter("firstname")+request.getParameter("lastname")+
+						request.getParameter("companyName")+request.getParameter("sirenNumber"));
+				
+				//donationForm.setCompanyMemberFirstName(request.getParameter("firstname"));
+				//donationForm.setCompanyMemberLastName(request.getParameter("lastname"));
+				//donationForm.setCompanyName(request.getParameter("companyName"));
+				//donationForm.setSirenNumber(request.getParameter("sirenNumber"));
+			}else{
+				//if its a common profile
+				donationForm.setFirstName(request.getParameter("firstname"));
+				donationForm.setLastName(request.getParameter("lastname"));
+				
+				//logs
+				System.out.print(request.getParameter("firstname")+request.getParameter("lastname"));
+				
+			}
+			
 			donationForm.setSubmitDate(new Date());
+			System.out.println(new Date());
+			
+			if(typeDonation!="parainage"){
 			
 			//get the project from the ID
 			Project project= new Project();
 			SubProject subProject = new SubProject();
 			//project= projectDAO.getProjectById(request.getParameter("projectId");
 			//subProject= subProjectDAO.getSubProjectById(request.getParameter(subProjectId");
-			donationForm.setProject(project);
-			donationForm.setSubProject(subProject);
-			donationForm.setAddress(request.getParameter("address"));
-			donationForm.setZipCode(request.getParameter("zip"));
-			donationForm.setCity(request.getParameter("city"));
-			
-			CompanyInfos companyInfos = new CompanyInfos();
-			//set every set of company infos	
-			companyInfos.setCompanyName(request.getParameter("companyName"));
-			if(request.getParameter("isCompany")!=null){
-				System.out.println("isCompany : true");
-				companyInfos.setSirenNum(Integer.parseInt(request.getParameter("sirenNum")));
-				companyInfos.setPhysicalAddress(request.getParameter("addressCompany"));
-				companyInfos.setZipCode(request.getParameter("zipCompany"));
-				companyInfos.setCity(request.getParameter("cityCompany"));
-				companyInfos.setCountry(request.getParameter("countryCompany"));
-			}else{
-				System.out.println("isCompany : false");
+			if(project!=null && subProject!=null){
+				donationForm.setProject(project);
+				donationForm.setSubProject(subProject);
 			}
+			System.out.println(request.getParameter("project"));
+			System.out.println(request.getParameter("subProject"));
+			}else{
+				
+				
+				
+			}
+			
 			//add to file then put the path
 			String path = new String();
 			donationForm.setMaterialDonation(path);

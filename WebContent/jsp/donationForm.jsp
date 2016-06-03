@@ -55,7 +55,7 @@
 						Project project = (Project) request.getAttribute("project");
 														    				if(project!=null){
 														    					out.println("<p>"+project.getTitleProject()+"</p>");
-														    					out.println("<input type=\"hidden\" value=\""+project.getIdProject()+"\"/>");
+														    					out.println("<input type=\"hidden\" name=\"project\" value=\""+project.getIdProject()+"\"/>");
 														    				}else{
 														    					out.println("<input type=\"text\""+
 														    							"class=\"form-control mandatory\" name=\"project\""+ 
@@ -103,38 +103,18 @@
 				</div>
 				<div class="form-group">
 					<label for="sirenNum">Numero de Siren *</label> <input type="text"
-						class="form-control mandatory" name="sirenNum"
+						class="form-control mandatory" name="sirenNumber"
 						onblur="checkIfEmpty(this);" />
 				</div>
 				<div class="form-group">
-					<label for="adress">Adresse *</label> <input type="text"
-						class="form-control mandatory" name="addressCompany"
-						placeholder="Adresse" onblur="checkIfEmpty(this);" />
-				</div>
-				<div class="form-group">
-					<label for="zip">Code Postal*</label> <input type="number"
-						class="form-control mandatory" name="zipCompany"
-						placeholder="Code Postal" onblur="checkIfEmpty(this);" />
-				</div>
-				<div class="form-group">
-					<label for="city">Ville *</label> <input type="text"
-						class="form-control mandatory" name="cityCompany"
-						placeholder="Ville" onblur="checkIfEmpty(this);" />
-				</div>
-				<div class="form-group">
-					<label for="country">Pays *</label> <input type="text"
-						class="form-control mandatory" name="countryCompany"
-						placeholder="Pays" onblur="checkIfEmpty(this);" />
-				</div>
-				<div class="form-group">
 					<label for="lastnameEmployee">Nom de l'employé*</label> <input
-						type="text" class="form-control mandatory" name="lastnameEmployee"
+						type="text" class="form-control mandatory" name="lastName"
 						placeholder="Nom employé" onblur="checkIfEmpty(this);" />
 				</div>
 				<div class="form-group">
 					<label for="firstnameEmployee">Prénom de l'employé*</label> <input
 						type="text" class="form-control mandatory"
-						name="firstnameEmployee" placeholder="Prénom employé"
+						name="firstName" placeholder="Prénom employé"
 						onblur="checkIfEmpty(this);" />
 				</div>
 			</div>
@@ -329,18 +309,6 @@
 			var mandatoryFieldMissing = true;
 			var createDonation = "/epvnProject/donation/do";
 			console.log("Checking mandatory fields");
-			/*
-			var mandatoryFields = document.getElementsByClassName('mandatory');
-			var i;
-			for(i=0;i<mandatoryFields.length;i++){
-				if((mandatoryFields[i].value =="" || mandatoryFields[i].value == null) && mandatoryFields[i].css('display') == 'none'){
-					console.log(mandatoryFields[i].name);
-					console.log(mandatoryFields[i].css('display'));
-					mandatoryFieldMissing = false;
-					mandatoryFields[i].style.border="3px solid red";
-					mandatoryFields[i].placeholder="Ce champs est obligatoire. Merci de bien vouloir le remplir.";				      
-				}
-			}*/
 			$(".mandatory:visible")
 					.each(
 							function() {
