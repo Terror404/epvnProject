@@ -4,23 +4,33 @@ import java.util.Date;
 
 public class User {
 	private Integer idUser;
+	private Integer role;
 	private String firstName;
 	private String lastName;
 	private String mailAddress;
+	private String password;
 	private Integer phoneNumber;
 	private Date creationDate;
 	private Boolean adherent;
+	private Date dateAdherent;
 	private Integer adminLevel;
 	private String physicalAddress;
 	private String zipCode;
 	private String city;
-	private String country;
-	private CompanyInfos companyInfos;
+	private String companyName;
+	private Integer sirenNum;
+	
 	public Integer getIdUser() {
 		return idUser;
 	}
 	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
+	}
+	public Integer getRole() {
+		return role;
+	}
+	public void setRole(Integer role) {
+		this.role = role;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -40,6 +50,12 @@ public class User {
 	public void setMailAddress(String mailAddress) {
 		this.mailAddress = mailAddress;
 	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public Integer getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -58,17 +74,23 @@ public class User {
 	public void setAdherent(Boolean adherent) {
 		this.adherent = adherent;
 	}
+	public Date getDateAdherent() {
+		return dateAdherent;
+	}
+	public void setDateAdherent(Date dateAdherent) {
+		this.dateAdherent = dateAdherent;
+	}
 	public Integer getAdminLevel() {
 		return adminLevel;
 	}
 	public void setAdminLevel(Integer adminLevel) {
 		this.adminLevel = adminLevel;
 	}
-	public String getPhisicalAddress() {
+	public String getPhysicalAddress() {
 		return physicalAddress;
 	}
-	public void setPhisicalAddress(String phisicalAddress) {
-		this.physicalAddress = phisicalAddress;
+	public void setPhysicalAddress(String physicalAddress) {
+		this.physicalAddress = physicalAddress;
 	}
 	public String getZipCode() {
 		return zipCode;
@@ -82,17 +104,17 @@ public class User {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public String getCountry() {
-		return country;
+	public String getCompanyName() {
+		return companyName;
 	}
-	public void setCountry(String country) {
-		this.country = country;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
-	public CompanyInfos getCompanyInfos() {
-		return companyInfos;
+	public Integer getSirenNum() {
+		return sirenNum;
 	}
-	public void setCompanyInfos(CompanyInfos companyInfos) {
-		this.companyInfos = companyInfos;
+	public void setSirenNum(Integer sirenNum) {
+		this.sirenNum = sirenNum;
 	}
 	
 
