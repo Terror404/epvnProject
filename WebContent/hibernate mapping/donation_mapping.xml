@@ -3,76 +3,90 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="donation" table="DONATION">
-        <id name="id" type="java.lang.Integer" column="ID" length="11" />
+        <id name="id" type="java.lang.Integer" column="ID" length="10" />
         
         <property name="idType" type="java.lang.Integer">
-            <column name="ID_TYPE" length="11" />
+            <column name="ID_TYPE" length="10" />
+        </property>
+        
+        <property name="donationType" type="java.lang.Integer">
+            <column name="DONATION_TYPE" length="1" />
         </property>
         
         <property name="firstName" type="string">
-            <column name="FIRSTNAME" length="50" />
+            <column name="FIRST_NAME" length="255" />
         </property>
         
         <property name="lastName" type="string">
-            <column name="LASTNAME" length="50" />
+            <column name="LAST_NAME" length="255" />
+        </property>
+        
+        <property name="companyName" type="string">
+            <column name="COMPANY_NAME" length="255" />
+        </property>
+        
+        <property name="siren" type="java.lang.Integer">
+            <column name="SIREN" length="20" />
         </property>
         
         <property name="mail" type="string">
-            <column name="MAIL" length="50" />
+            <column name="MAIL" length="255" />
         </property>
         
-        <!-- decimal wut -->
-        
-        <property name="value" type="java.lang.Decimal">
-            <column name="VALUE" length="50" />
+        <property name="password" type="string">
+            <column name="PASSWORD" length="255" />
         </property>
-        
-        <property name="phone" type="java.lang.Integer">
-            <column name="PHONE" length="13" />
+
+		<property name="address" type="string">
+            <column name="ADDRESS" length="255" />
         </property>
-        
-        <property name="submitDate" type="date">
-            <column name="SUBMIT_DATE" />
-        </property>
-        
-        <property name="comment" type="string">
-            <column name="ID_TYPE" length="50" />
-        </property>
-        
-        <property name="idProject" type="java.lang.Integer">
-            <column name="ID_PROJECT" length="11" />
-        </property>
-        
-        <property name="numberSubproject" type="java.lang.Integer">
-            <column name="NUMBER_SUBPROJECT" length="11" />
-        </property>
-        
-        <property name="address" type="string">
-            <column name="ADDRESS" length="50" />
-        </property>
-        
-        <property name="zipCode" type="java.lang.Integer">
-            <column name="ZIP_CODE" length="10" />
+
+        <property name="zipCode" type="string">
+            <column name="ZIP_CODE" length="255" />
         </property>
         
         <property name="city" type="string">
-            <column name="CITY" length="50" />
+            <column name="CITY" length="255" />
         </property>
         
-        <property name="country" type="string">
-            <column name="COUNTRY" length="50" />
+        <property name="phone" type="string">
+            <column name="PHONE" length="255" />
         </property>
         
-        <property name="isCompanyInfos" type="java.lang.Integer">
-            <column name="ID_COMPANY_INFOS" length="11" />
+        <property name="amount" type="java.lang.Decimal">
+            <column name="AMOUNT" length="15" precision="2" />
         </property>
         
-        <property name="materialDonationPath" type="string">
-            <column name="MATERIAL_DONATION_PATH" length="50" />
+        <property name="numberOfChildren" type="java.lang.Integer">
+            <column name="NUMBER_OF_CHILDREN" length="10" />
         </property>
         
-        <property name="idUser" type="java.lang.Integer">
-            <column name="ID_USER" length="11" />
+        <property name="frequency" type="java.lang.Integer">
+            <column name="FREQUENCY" length="2" />
+        </property>
+                
+        <property name="attachedFile" type="string">
+            <column name="ATTACHED_FILE" length="255" />
+        </property>
+        
+        <property name="donationDate" type="date">
+            <column name="DONATION_DATE" />
+        </property>
+        
+        <property name="receipt" type="string">
+            <column name="RECEIPT" length="255" />
+        </property>
+        
+        <property name="projectID" type="java.lang.Integer">
+            <column name="PROJECT_ID" length="10" />
+        </property>
+        
+        <property name="SubprojectID" type="java.lang.Integer">
+            <column name="SUBPROJECT_ID" length="10" />
+        </property>
+        
+        <property name="profileID" type="java.lang.Integer">
+            <column name="PROFILE_ID" length="10" />
         </property>
     </class>
 </hibernate-mapping>

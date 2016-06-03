@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+						http://www.springframework.org/schema/tx
+						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd
+						http://cxf.apache.org/jaxws
+						http://cxf.apache.org/schemas/jaxws.xsd
+						http://www.springframework.org/schema/mvc 
+						http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+						http://www.springframework.org/schema/security 
+						http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+	
+	<!-- Encryption management -->
+	<bean id="pbeConfiguration" class="net.snecma.hub.web.pbe.config.CustomPBEConfig">
+		<property name="algorithm" value="PBEWithMD5AndDES" />
+	</bean>
+
+	<bean id="hibernateStringEncryptor"
+		class="org.jasypt.hibernate.encryptor.HibernatePBEStringEncryptor">
+		<property name="registeredName" value="hibernateStringEncryptor"></property>
+		<property name="config" ref="pbeConfiguration"></property>
+	</bean>
+
+	<bean id="pbeConfiguration2" class="net.snecma.hub.web.pbe.config.CustomPBEConfig">
+		<property name="algorithm" value="PBEWithMD5AndDES" />
+	</bean>
+
+	<bean id="stringEncryptor" class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor">
+		<property name="config" ref="pbeConfiguration2" />
+	</bean>
+
+	<!-- End encryption management -->
+						
+	<context:component-scan base-package="net.snecma.hub.domain.dao" />
+	<context:component-scan base-package="net.snecma.hub.domain.cfm.dao" />	
+	<context:component-scan base-package="net.snecma.hub.business.service">
+		<context:exclude-filter type="assignable" expression="net.snecma.hub.business.service.warranty.WarrantyClaimVersionService"/>
+	</context:component-scan>
+	<context:component-scan base-package="net.snecma.hub.business.cfm.service" />
+	<context:component-scan base-package="net.snecma.hub.ad.service" />
+	<context:component-scan base-package="net.snecma.hub.web.webservice.tool" />
+	
+	<!-- Bean specifying the version of the application -->
+    <bean id="appVersion" class="java.lang.String">
+    	<constructor-arg type="java.lang.String" value="cfm" />
+    </bean>
+
+	<bean id="ExceptionHandler" class="net.snecma.hub.web.controller.ExceptionHandlerController"/>
+	
+	<!-- jee:jndi-lookup id="HubDataSource" jndi-name="java:jdbc/hubwebDS" /-->
+
+	<!-- Declaration fabrique de session hibernate -->
+	<bean id="dbSessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- property name="dataSource" ref="HubDataSource" /-->
+		<property name="configLocation" value="classpath:hibernateCfm.cfg.xml"></property>
+		<property name="mappingResources">
+			<list>
+			 	<value>net/snecma/hub/domain/#{appVersion}/hbm/admin/UserHub.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/admin/Functionality.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/admin/Notification.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/admin/Profile.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/admin/RelProfileNotification.hbm.xml</value>
+				
+				<!--	WARRANTY  -->
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/RelCreditNotifSignParam.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/RelCsaEngine.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/Csa.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/Customer.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/Engine.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/EngineFamilyModel.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/BusinessPlan.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/ClaimAttachedFile.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/ClaimItemAttachedFile.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/ClaimItemStatus.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/ClaimConfirmMsg.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/CnStatus.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/CommitmentLetter.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/Concession.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/CostCode.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/CsaAttachedFile.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/CreditClaimStatus.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/CreditNotification.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/CreditNotificationAttachedFile.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/CreditNotificationHistoric.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/CreditNotificationItem.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/CreditNotificationItemAttachedFile.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/Delegation.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/ModuleType.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/RepairdateType.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/ServiceBulletin.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/ServiceBulletinAttachedFile.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/ShopCode.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/SignatoriesParameters.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/WarrantyClaimItemVersion.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/WarrantyClaimVersion.hbm.xml</value>
+				<value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/WarrantyType.hbm.xml</value>
+                <value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/SeqWarrantyClaimVersion.hbm.xml</value>
+                <value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/Invoice.hbm.xml</value>
+                <value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/ClaimComment.hbm.xml</value>
+                <value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/AnalyticalImputation.hbm.xml</value>
+                <value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/AnnualDataSpent.hbm.xml</value>
+                <value>net/snecma/hub/domain/#{appVersion}/hbm/warranty/ReferentialWarning.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Gestionnaire de transaction -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="dbSessionFactory" />
+	</bean>
+
+	<!-- Declaration transaction selon sementique des methodes d'appel -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<!-- toutes les methodes commencant par get sont en lecture seule -->
+			<tx:method name="get*" read-only="true" />
+			<!-- pour toutes les autres on applique la regle par defaut -->
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- Declaration transaction selon sementique des methodes d'appel des services -->
+	<aop:config>
+		<aop:pointcut id="serviceMethods"
+			expression="execution(* net.snecma.hub.business.service.warranty.*Service.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods" />
+		<aop:advisor advice-ref="txAdvice"
+			pointcut="execution(* net.snecma.hub.web.webservice.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice"
+			pointcut="execution(* net.snecma.hub.business.service.*Service.*(..))" />
+		<aop:advisor advice-ref="txAdvice"
+			pointcut="execution(* net.snecma.hub.business.cfm.service.warranty.*Service.*(..))" />
+		<aop:advisor advice-ref="txAdvice"
+			pointcut="execution(* net.snecma.hub.business.service.admin.*Service.*(..))" />			
+	</aop:config>
+
+	<!-- Message resource -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+                <value>/WEB-INF/messages</value>
+                <value>/WEB-INF/SiteMap/sitemap</value>
+                <value>/WEB-INF/parameters</value>
+                <value>/WEB-INF/mail</value>
+                <value>/WEB-INF/validationMessagescfm</value>
+            </list>
+		</property>
+	</bean>
+	
+	<!-- WebService -->
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+    
+	<!-- Spring manage ServiceBean -->
+    <bean id="hubWebServ" class="net.snecma.hub.web.webservice.HubWebServiceImpl" />
+    <!-- JAX-WS Service Endpoint -->
+	<jaxws:endpoint id="hubWebService" implementor="#hubWebServ" address="/hubWebServiceWarrantyCfm" />
+    <!-- jaxws:endpoint id="hubWebService" implementor="#hubWebServ" address="/hubWebService">
+    	<jaxws:inInterceptors>
+			<bean class="org.apache.cxf.binding.soap.saaj.SAAJInInterceptor"/>
+			<bean class="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor">
+			   <constructor-arg>
+			      <map>
+			         <entry key="action" value="UsernameToken"/>
+			         <entry key="passwordType" value="PasswordText"/>
+			         <entry key="passwordCallbackClass" value="net.snecma.hub.web.webservice.security.ServerPasswordCallback"/>
+			      </map>
+			   </constructor-arg>
+			</bean>
+		</jaxws:inInterceptors>
+    </jaxws:endpoint -->
+    
+    <!-- Stockage du contexte applicatif Spring dans un objet dedie -->
+    <bean id="contextApplicationContextProvider" class="net.snecma.hub.fwk.spring.context.ApplicationContextProvider"></bean>
+    
+    <!-- SiteMapProvider utilisé pour la création des fils d'ariane -->
+    <bean id="siteMapProvider" class="net.snecma.hub.fwk.web.sitemap.SiteMapProvider">
+    	<constructor-arg type="java.lang.String" value="WEB-INF/SiteMap/sitemapCfm.xml" />
+    </bean>
+    
+    <!-- Bean containing list of the referentials -->
+    <bean id="referentialData" class="net.snecma.hub.web.referential.ReferentialData"></bean>
+    
+    <!-- Bean containing mapping between url and functionalities -->
+    <bean id="hubSecurityMappingFunctionalities" class="net.snecma.hub.credential.HubCredentialMapping"></bean>
+    
+    <!-- Bean containing the association of a reject from the hub and spec2000 error -->
+    <bean id="orderValidatorResultSeverity" class="net.snecma.hub.common.dto.OrderValidatorResultSeverity">
+    	<constructor-arg type="java.lang.String" value="cfm" />
+    </bean>
+   
+	<!-- Bean used to call ConnectAero warranty web service -->
+    <bean id="warrantyManagementConnectAero" class="net.snecma.hub.web.remoting.jaxws.SecuredJaxWsPortProxyFactoryBean">
+		<property name="serviceInterface" value="com.snecma.hubs2k.cfm.warrantymanagement.CfmWarrantyManagementService" />
+		<property name="wsdlDocumentUrl"  value="/WEB-INF/wsdl/CfmWarrantyManagement.wsdl" />
+		<property name="endpointAddress"  value="http://localhost:8088/connectaero/ws/CfmWarrantyManagement" />
+		<!-- property name="endpointAddress"  value="https://item-61871.dhcp.mtrl.fr.sopra:8443/connectaero/ws/WarrantyManagement" /-->
+		<property name="namespaceUri"     value="http://warrantymanagement.cfm.hubs2k.snecma.com/" />
+		<property name="serviceName"      value="CfmWarrantyManagementServiceImpl" />
+		<property name="portName"         value="CfmWarrantyManagementServiceImplPort" />
+<!--		<property name="encryptor" 		  ref="stringEncryptor" />-->
+<!--		<property name="username"         value="ws" />-->
+<!--		<property name="password"         value="ENC(K3v4JI9fU4ScUWN6lASK5A==)" />-->
+	</bean>
+	
+	
+</beans>

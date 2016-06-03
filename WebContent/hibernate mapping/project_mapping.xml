@@ -3,38 +3,55 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="project" table="PROJECT">
-        <id name="id" type="java.lang.Integer" column="ID" length="11" />
+        <id name="id" type="java.lang.Integer" column="ID" length="10" />
         
         <property name="title" type="string">
-            <column name="TITLE" length="50" />
+            <column name="TITLE" length="255" />
+        </property>
+                
+        <property name="objective" type="string">
+            <column name="OBJECTIVE" length="255" />
+        </property>
+                
+        <property name="target" type="string">
+            <column name="TARGET" length="255" />
         </property>
         
         <property name="description" type="string">
-            <column name="DESCRIPTION" length="255" />
+            <column name="DESCRIPTION" length="4000" />
+        </property>
+                
+        <property name="partners" type="string">
+            <column name="PARTNERS" length="255" />
         </property>
         
-        <property name="goal" type="java.lang.Integer">
-            <column name="GOAL" length="11" />
+        <property name="contact" type="string">
+            <column name="CONTACT" length="255" />
         </property>
         
-        <property name="actualAchievedGoal" type="java.lang.Integer">
-            <column name="ACTUAL_ACHIEVED_GOAL" length="11" />
+        <property name="donated" type="java.lang.Decimal">
+            <column name="DONATED" length="15" precision="2" />
         </property>
         
-        <property name="author" type="string">
-            <column name="AUTHOR" length="50" />
+        <property name="goal" type="java.lang.Decimal">
+            <column name="GOAL" length="15" precision="2" />
         </property>
         
-        <property name="idCategory" type="java.lang.Integer">
-            <column name="ID_CATEGORY" length="11" />
+        <property name="picturePath" type="string">
+            <column name="PICTURE_PATH" length="255" />
         </property>
-        
-        <property name="beginDate" type="date">
-            <column name="BEGIN_DATE" />
+
+        <property name="gMapURL" type="string">
+            <column name="GMAP_URL" length="255" />
         </property>
-        
-        <property name="endDate" type="date">
-            <column name="END_DATE" />
+
+        <property name="status" type="java.lang.integer">
+            <column name="STATUS" length="1" />
         </property>
+
+        <property name="categoryID" type="java.lang.integer">
+            <column name="CATEGORY_ID" length="10" />
+        </property>
+
     </class>
 </hibernate-mapping>
