@@ -80,6 +80,33 @@
     <url-pattern>/events/init</url-pattern>
     <url-pattern>/events/consult</url-pattern>
   </servlet-mapping>
+
+ 
+ <!-- REGISTER --> 
+ 
+	<servlet>
+		<servlet-name>createTable</servlet-name>
+		<servlet-class>database.createTable</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>createTable</servlet-name>
+		<url-pattern>/database/createTable</url-pattern>
+	</servlet-mapping>
+ 
+ 
+ <!-- Cant touch this dooouuuu doudoudou doudou doudoudou can't touch this -->
+ <!-- 
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>-->
+
+
   <servlet>
     <servlet-name>ConsultEvent</servlet-name>
     <servlet-class>controler.events.EventConsult</servlet-class>

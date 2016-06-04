@@ -56,8 +56,9 @@
 	                 	<strong>
 	                 		<% out.println(project.getTitleProject()); %>
 	     				</strong></a></div>
-	                 <span class="label label-success">Education</span>
-	                 <span class="label label-success">Santé</span>
+	                 <div class="label label-success">Education</div>
+	                 <div>Localité</div>
+	                 <div>Etat</div>
 	               </div>
 	               <input type="text" data-width="30%" value="<% out.println(project.getActualAchievedGoal()/project.getGoal()*100); %>" class="dial">
 	             </div>
