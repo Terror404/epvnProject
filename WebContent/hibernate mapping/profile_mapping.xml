@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="profile" table="PROFILE">
+        <id name="id" type="java.lang.Integer" column="ID" length="10" />
+        
+        <property name="role" type="java.lang.Integer">
+            <column name="ROLE" length="1" />
+        </property>
+        
+        <property name="firstName" type="string">
+            <column name="FIRST_NAME" length="255" />
+        </property>
+        
+        <property name="lastName" type="string">
+            <column name="LAST_NAME" length="255" />
+        </property>
+        
+        <property name="companyName" type="string">
+            <column name="COMPANY_NAME" length="255" />
+        </property>
+        
+        <property name="siren" type="java.lang.Integer">
+            <column name="SIREN" length="10" />
+        </property>
+        
+        <property name="mail" type="string">
+            <column name="MAIL" length="255" />
+        </property>
+        
+        <property name="password" type="string">
+            <column name="PASSWORD" length="255" />
+        </property>
+        
+        <property name="address" type="java.lang.Integer">
+            <column name="ADDRESS" precision="11" />
+        </property>
+        
+        <property name="zipCode" type="java.lang.Integer">
+            <column name="ZIP_CODE" precision="5" />
+        </property>
+        
+        <property name="city" type="string">
+            <column name="CITY" precision="50" />
+        </property>
+        
+        <property name="phone" type="string">
+            <column name="PHONE" length="255" />
+        </property>
+        
+        <property name="adherent" type="java.lang.Integer">
+            <column name="ADHERENT" length="1" />
+        </property>
+        
+        <property name="dateAdherent" type="date">
+            <column name="DATE_ADHERENT" />
+        </property>
+        
+    </class>
+</hibernate-mapping>
