@@ -22,6 +22,7 @@ public class Project {
 	private String author;
 	private Date beginDate;
 	private Date endDate;
+	private String latLng;
 	private List<SubProject> subProjectList;
 
 	public Integer getIdProject() {
@@ -158,6 +159,14 @@ public class Project {
 
 	public void setStatus(Integer status) {
 		this.status = status;
+	}
+
+	public String getLatLng() {
+		return latLng;
+	}
+
+	public void setLatLng(String latLng) {
+		this.latLng = latLng;
 	}
 
 }

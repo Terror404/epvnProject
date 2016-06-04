@@ -1,6 +1,8 @@
 package controler.project;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -66,21 +68,38 @@ public class CreateOrModifyProject extends HttpServlet {
 					.getRequestDispatcher("/jsp/projectForm.jsp");
 			dispatcher.include(request, response);
 		} else {
-			project.setBeginDate(new Date());
+			//project.setBeginDate(new Date());
 			// set de l'auteur quand on aura des user connectés
 			// project.setAuthor(author);
 			// TODO: catégorie du projet
 			CategoryProject categoryProject = new CategoryProject();
 			project.setCategoryProject(categoryProject);
 			project.setConcernedPublic(request.getParameter("concernedPublic"));
-			project.setDescriptionProject(request
-					.getParameter("descriptionProject"));
+			project.setDescriptionProject(request.getParameter("descriptionProject"));
 			// TODO: set end date
-			// project.setEndDate(endDate);
+			String beginDateStr = request.getParameter("beginDate");
+			String endDateStr = request.getParameter("endDate");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				project.setBeginDate(sdf.parse(beginDateStr));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				project.setEndDate(sdf.parse(endDateStr));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			// TODO: set goal
-			// project.setGoal(goal);
-			project.setObjectifDescription(request
-					.getParameter("objectifDescriptionProject"));
+			String goalStr = request.getParameter("goalProject");
+			project.setGoal(Double.parseDouble(goalStr));
+			
+			// TODO: upload img
+			
+			project.setLatLng(request.getParameter("lat")+"/"+request.getParameter("lng"));
+			project.setObjectifDescription(request.getParameter("objectifDescriptionProject"));
 			project.setPartnersProject(request.getParameter("partnersProject"));
 			project.setTitleProject(request.getParameter("titleProject"));
 			RequestDispatcher dispatcher = getServletContext()
