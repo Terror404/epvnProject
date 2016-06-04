@@ -28,7 +28,7 @@
 			<strong>Formulaire de don</strong>
 		</h2>
 	</div>
-
+	
 	<form id="createDonationForm" enctype="mutlipart/form-data">
 		<div class="container"
 			style="margin-top: 10px; margin-bottom: 10px; padding-top: 5px; border: 0.2px solid; border-radius: 4px; border-color: #e0e0e0; text-align: center;">
@@ -36,7 +36,6 @@
 				<label for="typeDon">Type de don *</label> <select name="typeDon"
 					id="typeDon" class="form-control">
 					<option value="money">Monétaire</option>
-					<option value="membership">Adhésion</option>
 					<option value="time">Bénévolat</option>
 					<option value="parainage">Parainage</option>
 					<option value="other">Autre</option>
@@ -146,7 +145,7 @@
 			<div class="form-group">
 				<label for="zip">Code Postal *</label> <input type="number"
 					class="form-control mandatory" name="zip" placeholder="Code Postal"
-					onblur="checkIfEmpty(this);" />
+					onblur="checkIfEmpty(this);" maxlength="5"/>
 			</div>
 			<div class="form-group">
 				<label for="city">Ville *</label> <input type="text"
@@ -160,7 +159,7 @@
 			</div>
 			<div class="form-group">
 				<label for="phone">Téléphone</label> <input type="text"
-					class="form-control" name="phone" placeholder="Téléphone" />
+					class="form-control" name="phone" placeholder="Téléphone" maxlength="10"/>
 			</div>
 		</div>
 
@@ -175,34 +174,19 @@
 			</div>
 		</div>
 		
-		<div class="toggle-parainage">
+		<div class="toggle-parainage" style="display :none;">
 			<div class="container"
 				style="margin-top: 10px; margin-bottom: 10px; padding-top: 5px; border: 0.2px solid; border-radius: 4px; border-color: #e0e0e0; text-align: center;">
 				<div class="form-group">
 				<label for="orphanage">Orphelinat</label> <select
-						name="orphenage" class="form-control">
+						name="orphenage" class="form-control" onchange="calculateNewAmount">
 						<% //TODO: choix des orphelinats %>
 					</select>
 				</div>
-			</div>
-		</div>
-		
-		<div class="container"
-			style="margin-top: 10px; margin-bottom: 10px; padding-top: 5px; border: 0.2px solid; border-radius: 4px; border-color: #e0e0e0; text-align: center;">
-			<div class="form-group">
-				<label>Je souhaite adhérer l'association</label> <input
-					type="checkbox" name="membership" name="membership1" value="yes" />
-
-			</div>
-		</div>
-
-		<div class="toggle-membership" style="display: none">
-			<div class="container"
-				style="margin-top: 10px; margin-bottom: 10px; padding-top: 5px; border: 0.2px solid; border-radius: 4px; border-color: #e0e0e0; text-align: center;">
 				<div class="form-group">
-					<label for="amountM">Montant *</label> <input type="text"
-						class="form-control mandatory" name="amountM" value="20"
-						onblur="checkIfEmpty(this);" disabled/>
+				<label for="numberOfChildren">Nombre d'enfants parrainés</label>
+				<input type="number" class="form-control" default="0" maxlength="4" name="numberOfChildren" 
+					placeholder="Nombre d'enfants parrainés" onchange="calculateNewAmount"/>
 				</div>
 			</div>
 		</div>
@@ -237,6 +221,14 @@
 				</div>
 			</div>
 		</div>
+		<div class="container toggle-membership-request"
+			style="margin-top: 10px; margin-bottom: 10px; padding-top: 5px; border: 0.2px solid; border-radius: 4px; border-color: #e0e0e0; text-align: center;">
+			<div class="form-group">
+				<label>Je souhaite adhérer l'association</label> <input
+					type="checkbox" name="membership"  value="yes" />
+
+			</div>
+		</div>
 
 		<div class="container">
 			<input type="button" onclick="createDonation();"
@@ -256,6 +248,45 @@
 		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 		crossorigin="anonymous"></script>
 	<script>
+	document.ready(function(){
+		var type = $("#typeDon").val();
+		if (type == "money") {
+			$(".toggle-money").show();
+			$(".toggle-membership").hide();
+			$(".toggle-time").hide();
+			$(".toggle-parainage").hide();
+			$(".toggle-other").hide();
+			$(".toggle-project").show();
+		} else if (type == "membership") {
+			$(".toggle-money").hide();
+			$(".toggle-membership").show();
+			$(".toggle-project").show();
+			$(".toggle-time").hide();
+			$(".toggle-parainage").hide();
+			$(".toggle-other").hide();
+		} else if (type == "time") {
+			$(".toggle-money").hide();
+			$(".toggle-membership").hide();
+			$(".toggle-time").show();
+			$(".toggle-project").show();
+			$(".toggle-other").hide();
+			$(".toggle-parainage").hide();
+		} else if (type == "parainage") {
+			$(".toggle-money").hide();
+			$(".toggle-membership").hide();
+			$(".toggle-project").hide();
+			$(".toggle-other").hide();
+			$(".toggle-parainage").show();
+
+		} else if (type == "other") {
+			$(".toggle-money").hide();
+			$(".toggle-membership").hide();
+			$(".toggle-time").hide();
+			$(".toggle-other").show();
+			$(".toggle-project").show();
+			$(".toggle-parainage").hide();
+		}
+	});
 		$("#typeDon").change(function() {
 			var type = $("#typeDon").val();
 			if (type == "money") {

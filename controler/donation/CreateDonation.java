@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.beans.donation.Donation;
-import model.beans.donation.TypeDonation;
-import model.beans.profile.CompanyInfos;
 import model.beans.profile.User;
 import model.beans.project.Project;
 import model.beans.project.SubProject;
@@ -50,6 +48,8 @@ public class CreateDonation extends HttpServlet {
 			InsertCreateDonation(request,response);
 		}else if(request.getRequestURI().equals("/epvnProject/donation/init")){
 			Init(request,response);
+		}else if(request.getRequestURI().equals("/epvnProject/donation/init")){
+			BecomeMember(request,response);
 		}
 
 		
@@ -92,14 +92,15 @@ public class CreateDonation extends HttpServlet {
 			RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/jsp/donationForm.jsp");
 			dispatcher.include(request, response);
 		}else{
-			System.out.println("Donation begin");
-			//TODO : get the type donation from id
-			String typeDonation = new String();
-			typeDonation = request.getParameter("typeDon");
-			
+			try{
 			//BEGIN DONATION CREATION
+			System.out.println("Donation begin");
 			
-			//set the address
+			//Set Type Donation
+			String typeDonation = request.getParameter("typeDon");
+			donationForm.setTypeDonation(typeDonation);
+						
+			//Set common informations
 			donationForm.setAddress(request.getParameter("address"));
 			donationForm.setZipCode(request.getParameter("zip"));
 			donationForm.setCity(request.getParameter("city"));
@@ -107,13 +108,13 @@ public class CreateDonation extends HttpServlet {
 			donationForm.setPhoneNumber(request.getParameter("phone"));
 			if(request.getParameter("amount")!=null && ! "".equals(request.getParameter("amount"))){
 				donationForm.setValue(Double.parseDouble(request.getParameter("amount")));
+				System.out.println(Double.parseDouble(request.getParameter("amount")));
 			}
 			System.out.println(request.getParameter("address"));
 			System.out.println(request.getParameter("zip"));
 			System.out.println(request.getParameter("email"));
 			System.out.println(request.getParameter("city"));
 			System.out.println(request.getParameter("phone"));
-			System.out.println(Double.parseDouble(request.getParameter("amount")));
 			
 			if(request.getParameter("isCompany")!=null){
 				//if it is a company
@@ -127,8 +128,8 @@ public class CreateDonation extends HttpServlet {
 				
 				//donationForm.setCompanyMemberFirstName(request.getParameter("firstname"));
 				//donationForm.setCompanyMemberLastName(request.getParameter("lastname"));
-				//donationForm.setCompanyName(request.getParameter("companyName"));
-				//donationForm.setSirenNumber(request.getParameter("sirenNumber"));
+				donationForm.setCompanyName(request.getParameter("companyName"));
+				donationForm.setSiren(Integer.parseInt(request.getParameter("sirenNumber")));
 			}else{
 				//if its a common profile
 				donationForm.setFirstName(request.getParameter("firstname"));
@@ -144,37 +145,79 @@ public class CreateDonation extends HttpServlet {
 			
 			if(typeDonation!="parainage"){
 			
-			//get the project from the ID
-			Project project= new Project();
-			SubProject subProject = new SubProject();
-			//project= projectDAO.getProjectById(request.getParameter("projectId");
-			//subProject= subProjectDAO.getSubProjectById(request.getParameter(subProjectId");
-			if(project!=null && subProject!=null){
-				donationForm.setProject(project);
-				donationForm.setSubProject(subProject);
-			}
-			System.out.println(request.getParameter("project"));
-			System.out.println(request.getParameter("subProject"));
+				//TODO get the project from the ID
+				Project project= new Project();
+				SubProject subProject = new SubProject();
+				//project= projectDAO.getProjectById(request.getParameter("projectId");
+				//subProject= subProjectDAO.getSubProjectById(request.getParameter(subProjectId");
+				if(project!=null && subProject!=null){
+					donationForm.setProject(project);
+					donationForm.setSubProject(subProject);
+				}else{
+					throw new Exception("Project or SubProject missing.") ;
+				}
+				
+				/*TODO add to file then put the path
+				if(request.getParameter("attachedFile"){
+					inserer la file
+				}				
+				*/
+				String path = new String();
+				donationForm.setMaterialDonation(path);
+				
+				System.out.println(request.getParameter("project"));
+				System.out.println(request.getParameter("subProject"));
 			}else{
-				
-				
-				
+				/*TODO Orphanage orphanage = new Orphanage();
+				orphanage = orphanageDAO.getOrphanageById(Integer.parseInt(request.getParameter("orphanage")));
+				if(orphanage!=null){
+				donationForm.setOrphanage(orphanage);
+				donationForm.setNumberOfChildren(Integer.parseInt(request.getParameter("numberOfChildren")));
+				}else{
+				throw error
+				}
+				*/				
 			}
 			
-			//add to file then put the path
-			String path = new String();
-			donationForm.setMaterialDonation(path);
-			
-			//get the form values
+			/*TODO	Si un User est connecté
+			 if(connectedUser!=null){
+			get the form values
 			User user = new User();
 			donationForm.setUser(user);
-			
+			}*/
 			//TODO: insert donation form	
+			//donationDAO.insertDonation(donationForm);
+			}
+			catch(Exception e){
+				System.out.println("Error while creating donation:"+e.getMessage());
+				System.out.println("Returning to form");
+			}
 			
-			RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/jsp/donationForm.jsp");
+			String nextPage ="/jsp/donationForm.jsp";
+			if(request.getParameter("membership")!=null){
+				nextPage="/jsp/membershipForm.jsp";
+				for(String name : request.getParameterMap().keySet()){
+					request.setAttribute(name,request.getParameter(name));
+					System.out.println(name+" "+request.getParameter(name));
+				}
+				request.setAttribute("donationForm", donationForm);
+			}
+			
+			RequestDispatcher dispatcher=getServletContext().getRequestDispatcher(nextPage);
 			dispatcher.include(request, response);
 		}
 		
+	}
+	public void BecomeMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		if(request.getAttribute("donationForm")!=null){
+			Donation donation = (Donation)request.getAttribute("donationForm");
+			//insert donation : donationDAO.insertDonation(donation);
+		}
+		
+	}
+	
+	public void generateFiscalReceipt(){
+		//TODO 
 	}
 
 }
