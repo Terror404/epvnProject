@@ -16,6 +16,8 @@ import model.beans.profile.User;
 import model.beans.project.Project;
 import model.beans.project.SubProject;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -31,7 +33,6 @@ public class CreateDonation extends HttpServlet {
      */
     public CreateDonation() {
         super();
-        
     }
     /**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -48,7 +49,7 @@ public class CreateDonation extends HttpServlet {
 			InsertCreateDonation(request,response);
 		}else if(request.getRequestURI().equals("/epvnProject/donation/init")){
 			Init(request,response);
-		}else if(request.getRequestURI().equals("/epvnProject/donation/init")){
+		}else if(request.getRequestURI().equals("/epvnProject/donation/newmember")){
 			BecomeMember(request,response);
 		}
 
@@ -58,6 +59,7 @@ public class CreateDonation extends HttpServlet {
 		//TODO:si un user est connecté, rentrer ses informations par défaut
 		//TODO:récupérer la page projet dont l'on vient pour renseigner les champs par défaut
 		
+		generateFiscalReceipt();
 		// à supprimer quand les dao sont pretes
 		Project project = new Project();
 		project.setIdProject(20);
@@ -209,15 +211,58 @@ public class CreateDonation extends HttpServlet {
 		
 	}
 	public void BecomeMember(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+				
 		if(request.getAttribute("donationForm")!=null){
+			System.out.println("Insertion of the donation pending");
 			Donation donation = (Donation)request.getAttribute("donationForm");
+			System.out.println(donation.getAddress());
+			System.out.println(donation.getCity());
+			System.out.println(donation.getValue());
 			//insert donation : donationDAO.insertDonation(donation);
+			System.out.println("Donation correctly inserted");
 		}
+		Donation membershipDonation = new Donation();
+		//Set common informations
+		membershipDonation.setAddress(request.getParameter("address"));
+		membershipDonation.setZipCode(request.getParameter("zip"));
+		membershipDonation.setCity(request.getParameter("city"));
+		membershipDonation.setMailAddress(request.getParameter("email"));
+		membershipDonation.setPhoneNumber(request.getParameter("phone"));
+		if(request.getParameter("isCompany")!=null){
+			//if it is a company
+			membershipDonation.setFirstName(null);
+			membershipDonation.setLastName(null);
+			
+			//logs
+			System.out.println("isCompany part:");
+			System.out.print(request.getParameter("firstname")+request.getParameter("lastname")+
+					request.getParameter("companyName")+request.getParameter("sirenNumber"));
+			membershipDonation.setCompanyName(request.getParameter("companyName"));
+			membershipDonation.setSiren(Integer.parseInt(request.getParameter("sirenNumber")));
+		}else{
+			//if its a common profile
+			membershipDonation.setFirstName(request.getParameter("firstname"));
+			membershipDonation.setLastName(request.getParameter("lastname"));
+			
+			//logs
+			System.out.print(request.getParameter("firstname")+request.getParameter("lastname"));
+			
+		}
+		User user=new User();
+		//TODO : send an email to admin + user
+		//send the emails
+		//user.setAdherentLevel();
+		//userDAO.updateUser(user);
+		//donationDAO.insertDonation(membershipDonation);
+		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/jsp/samplePaying.jsp");
+		dispatcher.include(request, response);
+		
 		
 	}
 	
 	public void generateFiscalReceipt(){
-		//TODO 
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("./WebContent/WEB-INF/applicationContext.xml");
+		
 	}
 
 }

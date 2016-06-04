@@ -28,7 +28,7 @@
 			<strong>Formulaire de don</strong>
 		</h2>
 	</div>
-	
+
 	<form id="createDonationForm" enctype="mutlipart/form-data">
 		<div class="container"
 			style="margin-top: 10px; margin-bottom: 10px; padding-top: 5px; border: 0.2px solid; border-radius: 4px; border-color: #e0e0e0; text-align: center;">
@@ -52,15 +52,15 @@
 					<label for="project">Projet *</label>
 					<%
 						Project project = (Project) request.getAttribute("project");
-														    				if(project!=null){
-														    					out.println("<p>"+project.getTitleProject()+"</p>");
-														    					out.println("<input type=\"hidden\" name=\"project\" value=\""+project.getIdProject()+"\"/>");
-														    				}else{
-														    					out.println("<input type=\"text\""+
-														    							"class=\"form-control mandatory\" name=\"project\""+ 
-														    							"placeholder=\"Nom du projet\" value=\"	\"/>"
-														    					);
-														    				}
+																	    				if(project!=null){
+																	    					out.println("<p>"+project.getTitleProject()+"</p>");
+																	    					out.println("<input type=\"hidden\" name=\"project\" value=\""+project.getIdProject()+"\"/>");
+																	    				}else{
+																	    					out.println("<input type=\"text\""+
+																	    							"class=\"form-control mandatory\" name=\"project\""+ 
+																	    							"placeholder=\"Nom du projet\" value=\"	\"/>"
+																	    					);
+																	    				}
 					%>
 				</div>
 
@@ -69,16 +69,16 @@
 						name="subProject" class="form-control">
 						<%
 							if(project!=null){
-								if(project.getSubProjectList()!=null){
-											if(project.getSubProjectList().size()>0){
-										for(SubProject subProject : project.getSubProjectList()){
-							        		  out.println("<option value=\""+subProject.getIdSubProject()+"\">"+
-							                  ""+subProject.getTitle()+""+
-							                "</option>");
-							        	  			}
-										}
-							    }
-							}
+												if(project.getSubProjectList()!=null){
+															if(project.getSubProjectList().size()>0){
+														for(SubProject subProject : project.getSubProjectList()){
+											        		  out.println("<option value=\""+subProject.getIdSubProject()+"\">"+
+											                  ""+subProject.getTitle()+""+
+											                "</option>");
+											        	  			}
+														}
+											    }
+											}
 						%>
 					</select>
 				</div>
@@ -112,9 +112,8 @@
 				</div>
 				<div class="form-group">
 					<label for="firstnameEmployee">Prénom de l'employé*</label> <input
-						type="text" class="form-control mandatory"
-						name="firstName" placeholder="Prénom employé"
-						onblur="checkIfEmpty(this);" />
+						type="text" class="form-control mandatory" name="firstName"
+						placeholder="Prénom employé" onblur="checkIfEmpty(this);" />
 				</div>
 			</div>
 		</div>
@@ -145,7 +144,7 @@
 			<div class="form-group">
 				<label for="zip">Code Postal *</label> <input type="number"
 					class="form-control mandatory" name="zip" placeholder="Code Postal"
-					onblur="checkIfEmpty(this);" maxlength="5"/>
+					onblur="checkIfEmpty(this);" maxlength="5" />
 			</div>
 			<div class="form-group">
 				<label for="city">Ville *</label> <input type="text"
@@ -159,7 +158,8 @@
 			</div>
 			<div class="form-group">
 				<label for="phone">Téléphone</label> <input type="text"
-					class="form-control" name="phone" placeholder="Téléphone" maxlength="10"/>
+					class="form-control" name="phone" placeholder="Téléphone"
+					maxlength="10" />
 			</div>
 		</div>
 
@@ -173,20 +173,23 @@
 				</div>
 			</div>
 		</div>
-		
-		<div class="toggle-parainage" style="display :none;">
+
+		<div class="toggle-parainage" style="display: none;">
 			<div class="container"
 				style="margin-top: 10px; margin-bottom: 10px; padding-top: 5px; border: 0.2px solid; border-radius: 4px; border-color: #e0e0e0; text-align: center;">
 				<div class="form-group">
-				<label for="orphanage">Orphelinat</label> <select
-						name="orphenage" class="form-control" onchange="calculateNewAmount">
-						<% //TODO: choix des orphelinats %>
+					<label for="orphanage">Orphelinat</label> <select name="orphenage"
+						class="form-control" onchange="calculateNewAmount">
+						<%
+							//TODO: choix des orphelinats
+						%>
 					</select>
 				</div>
 				<div class="form-group">
-				<label for="numberOfChildren">Nombre d'enfants parrainés</label>
-				<input type="number" class="form-control" default="0" maxlength="4" name="numberOfChildren" 
-					placeholder="Nombre d'enfants parrainés" onchange="calculateNewAmount"/>
+					<label for="numberOfChildren">Nombre d'enfants parrainés</label> <input
+						type="number" class="form-control" default="0" maxlength="4"
+						name="numberOfChildren" placeholder="Nombre d'enfants parrainés"
+						onchange="calculateNewAmount" />
 				</div>
 			</div>
 		</div>
@@ -225,7 +228,7 @@
 			style="margin-top: 10px; margin-bottom: 10px; padding-top: 5px; border: 0.2px solid; border-radius: 4px; border-color: #e0e0e0; text-align: center;">
 			<div class="form-group">
 				<label>Je souhaite adhérer l'association</label> <input
-					type="checkbox" name="membership"  value="yes" />
+					type="checkbox" name="membership" value="yes" />
 
 			</div>
 		</div>
@@ -248,7 +251,7 @@
 		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 		crossorigin="anonymous"></script>
 	<script>
-	document.ready(function(){
+	$(document).ready(function() {
 		var type = $("#typeDon").val();
 		if (type == "money") {
 			$(".toggle-money").show();

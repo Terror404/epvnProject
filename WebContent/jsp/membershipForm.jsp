@@ -23,7 +23,8 @@
 	<%@ include file="/jsp/header.jsp"%>
 	<%@page import="model.beans.donation.Donation"%>
 	<%Donation donationToPass = new Donation(); 
-	donationToPass=(Donation) request.getAttribute("donationForm"); 
+	donationToPass=(Donation) request.getAttribute("donationForm");
+	//TODO set the donation as a session variable
 	%>
 
 	<div class="container"
@@ -56,17 +57,6 @@
 					<label for="sirenNum">Numero de Siren *</label> <input type="text"
 						class="form-control mandatory" name="sirenNumber"
 						onblur="checkIfEmpty(this);" value="<%out.print(donationToPass.getSiren());%>"/>
-				</div>
-				<div class="form-group">
-					<label for="lastnameEmployee">Nom de l'employé*</label> <input
-						type="text" class="form-control mandatory" name="lastName"
-						placeholder="Nom employé" onblur="checkIfEmpty(this);" value="<%out.print(donationToPass.getLastName());%>"/>
-				</div>
-				<div class="form-group">
-					<label for="firstnameEmployee">Prénom de l'employé*</label> <input
-						type="text" class="form-control mandatory"
-						name="firstName" placeholder="Prénom employé"
-						onblur="checkIfEmpty(this);" value="<%out.print(donationToPass.getFirstName());%>"/>
 				</div>
 			</div>
 		</div>
@@ -123,6 +113,7 @@
 						class="form-control mandatory" name="amountM" value="<%out.print(donationToPass.getValue()+20.00);%>""
 						onblur="checkIfEmpty(this);" disabled/>
 				</div>
+				<!-- 
 				<div class="form-group">
 					<label >OU</label>
 				</div>
@@ -131,7 +122,7 @@
 				<input type="file"
 						class="form-control" name="pj1" />
 
-			</div>
+			</div> -->
 			</div>
 		</div>
 		
@@ -160,6 +151,12 @@
 		crossorigin="anonymous"></script>
 	<script>
 		
+		$(document).ready(function(){
+			if($("#isCompany").checked=true){
+				$(".toggle-company").toggle();
+			}
+		});
+	
 		$("#isCompany").change(function() {
 
 			$(".toggle-company").toggle(600);
@@ -172,7 +169,7 @@
 
 			var donationForm = document.getElementById('createDonationForm');
 			var mandatoryFieldMissing = true;
-			var createDonation = "/epvnProject/donation/becomeMember";
+			var createDonation = "/epvnProject/donation/newmember";
 			console.log("Checking mandatory fields");
 			$(".mandatory:visible")
 					.each(

@@ -35,21 +35,7 @@
 		</property>
 	</bean>
 
-	<!-- Gestionnaire de transaction -->
-	<bean id="txManager"
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-		<property name="sessionFactory" ref="dbSessionFactory" />
-	</bean>
-
-	<!-- Declaration transaction selon sementique des methodes d'appel -->
-	<tx:advice id="txAdvice" transaction-manager="txManager">
-		<tx:attributes>
-			<!-- toutes les methodes commencant par get sont en lecture seule -->
-			<tx:method name="get*" read-only="true" />
-			<!-- pour toutes les autres on applique la regle par defaut -->
-			<tx:method name="*" />
-		</tx:attributes>
-	</tx:advice>
+	
 	
 	
 	
