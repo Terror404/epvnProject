@@ -112,8 +112,18 @@
     <url-pattern>/project/create</url-pattern>
     <url-pattern>/project/modify</url-pattern>
   </servlet-mapping>
-  
-  
+ 
+ <!-- REGISTER --> 
+ 
+	<servlet>
+		<servlet-name>createTable</servlet-name>
+		<servlet-class>database.createTable</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>createTable</servlet-name>
+		<url-pattern>/database/createTable</url-pattern>
+	</servlet-mapping>
  
  
  <!-- Cant touch this dooouuuu doudoudou doudou doudoudou can't touch this -->
