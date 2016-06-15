@@ -8,7 +8,7 @@
 
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
-		<property name="connection.url">jdbc:mysql://localhost:3306/test</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/epvnproject</property>
 
 		<property name="connection.username">root</property>
 
