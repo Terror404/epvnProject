@@ -2,28 +2,27 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="event" table="EVENT">
-        <id name="id" type="java.lang.Integer" column="ID" length="10" />
+	<class name="model.beans.project.Event" table="EVENT">
+        <id name="idEvent" type="java.lang.Integer" column="ID" length="10" />
         
-        <property name="title" type="string">
+        <property name="titleEvent" type="string">
             <column name="TITLE" length="255" />
         </property>
         
-        <property name="description" type="string">
+        <property name="descriptionEvent" type="string">
             <column name="DESCRIPTION" length="4000" />
         </property>
         
-        <property name="partners" type="string">
+        <property name="partnersEvent" type="string">
             <column name="PARTNERS" length="255" />
         </property>
         
-        <property name="contact" type="string">
+        <property name="contactEvent" type="string">
             <column name="CONTACT" length="255" />
         </property>
         
-        <property name="projectID" type="java.lang.Integer">
-            <column name="PROJECT_ID" length="10" />
-        </property>
+        <many-to-one name="project" column="PROJECT_ID" class="model.beans.project.Project" not-null="true"/>
+        
 
     </class>
 </hibernate-mapping>

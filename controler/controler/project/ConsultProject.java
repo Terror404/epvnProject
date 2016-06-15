@@ -14,10 +14,23 @@ import javax.servlet.http.HttpServletResponse;
 import model.beans.project.Project;
 import model.beans.project.SubProject;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.orm.hibernate3.HibernateTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+
 /**
  * Servlet implementation class ConsultProject
  */
 @WebServlet("/ConsultProject")
+@Transactional
 public class ConsultProject extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -47,6 +60,21 @@ public class ConsultProject extends HttpServlet {
 		Project projectToLoad = new Project();
 		//projectToLoad = projectDao.getProjectById();
 		//List<SubProject> subProjects = subProjectDao.getListSubProjectsByProject(projectToLoad);
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+		SessionFactory dbSessionFactory = (SessionFactory)ctx.getBean("dbSessionFactory");
+		DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+		// explicitly setting the transaction name is something that can only be done programmatically
+		def.setName("Begin");
+		def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+		
+		HibernateTransactionManager txManager = (HibernateTransactionManager)ctx.getBean("transactionManager");
+		TransactionStatus txStatus = txManager.getTransaction(def);
+		Session session = dbSessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Criteria crit = session.createCriteria("model.beans.project.Project");
+		crit.add(Restrictions.eq("idProject",1));
+		
+		
 		
 		//module a supprimer quand on aura la dao
 		List<SubProject> subProjects = new ArrayList<SubProject>();
@@ -59,11 +87,14 @@ public class ConsultProject extends HttpServlet {
 		subProjects.add(subProject1);
 		subProjects.add(subProject2);
 		//Fin du module a supprimer
-		
+		/*
 		projectToLoad.setTitleProject("Mon titre");
 		projectToLoad.setActualAchievedGoal(1234.56);
 		projectToLoad.setGoal(7582.23);
 		projectToLoad.setSubProjectList(subProjects);
+		request.setAttribute("project",projectToLoad);*/
+		projectToLoad=(Project)crit.uniqueResult();
+		System.out.println(projectToLoad.getActualAchievedGoal());
 		request.setAttribute("project",projectToLoad);
 		System.out.println("Log: Project init done");
 		RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/jsp/projectView.jsp");

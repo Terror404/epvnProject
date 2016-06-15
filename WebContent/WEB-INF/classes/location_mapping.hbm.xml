@@ -2,10 +2,10 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="location" table="LOCATION">
-        <id name="id" type="java.lang.Integer" column="ID" length="11" />
+	<class name="model.beans.location.Location" table="LOCATION">
+        <id name="idLocation" type="java.lang.Integer" column="ID" length="11" />
         
-        <property name="name" type="string">
+        <property name="nameLocation" type="string">
             <column name="NAME" length="255" />
         </property>
         

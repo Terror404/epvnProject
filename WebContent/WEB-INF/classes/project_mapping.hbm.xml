@@ -2,38 +2,38 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="project" table="PROJECT">
-        <id name="id" type="java.lang.Integer" column="ID" length="10" />
+	<class name="model.beans.project.Project" table="PROJECT">
+        <id name="idProject" type="java.lang.Integer" column="ID" length="10" />
         
-        <property name="title" type="string">
+        <property name="titleProject" type="string">
             <column name="TITLE" length="255" />
         </property>
                 
-        <property name="objective" type="string">
+        <property name="objectifDescription" type="string">
             <column name="OBJECTIVE" length="255" />
         </property>
                 
-        <property name="target" type="string">
+        <property name="concernedPublic" type="string">
             <column name="TARGET" length="255" />
         </property>
         
-        <property name="description" type="string">
+        <property name="descriptionProject" type="string">
             <column name="DESCRIPTION" length="4000" />
         </property>
                 
-        <property name="partners" type="string">
+        <property name="partnersProject" type="string">
             <column name="PARTNERS" length="255" />
         </property>
         
-        <property name="contact" type="string">
+        <property name="contactProject" type="string">
             <column name="CONTACT" length="255" />
         </property>
         
-        <property name="donated" type="java.lang.Decimal">
+        <property name="actualAchievedGoal" type="java.lang.Double">
             <column name="DONATED" length="15" precision="2" />
         </property>
         
-        <property name="goal" type="java.lang.Decimal">
+        <property name="goal" type="java.lang.Double">
             <column name="GOAL" length="15" precision="2" />
         </property>
         
@@ -45,13 +45,12 @@
             <column name="GMAP_URL" length="255" />
         </property>
 
-        <property name="status" type="java.lang.integer">
+        <property name="status" type="java.lang.Integer">
             <column name="STATUS" length="1" />
         </property>
 
-        <property name="categoryID" type="java.lang.integer">
-            <column name="CATEGORY_ID" length="10" />
-        </property>
+        <many-to-one name="categoryProject" column="CATEGORY_ID" class="model.beans.project.CategoryProject" not-null="true"/>
+        
 
     </class>
 </hibernate-mapping>

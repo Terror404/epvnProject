@@ -1,0 +1,40 @@
+<!-- <? xml version='1.0' encoding='utf-8' ?> -->
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+		<property name="connection.url">jdbc:mysql://localhost:3306/test</property>
+
+		<property name="connection.username">root</property>
+
+		<property name="connection.password">root</property>
+
+		<!-- create / update -->
+
+
+		<property name="hibernate.hbm2ddl.auto">create</property>
+
+		<!-- Liste des classes à Mapper en base de données -->
+
+
+		<mapping resource="donation_mapping.hbm.xml" />
+
+		<mapping resource="event_mapping.hbm.xml" />
+
+		<mapping resource="project_category_mapping.hbm.xml" />
+
+		<mapping resource="project_mapping.hbm.xml" />
+
+		<mapping resource="sub_project_mapping.hbm.xml" />
+		
+		<mapping resource="user_mapping.hbm.xml" />
+		
+		<mapping resource="location_mapping.hbm.xml" />
+	</session-factory>
+
+</hibernate-configuration>

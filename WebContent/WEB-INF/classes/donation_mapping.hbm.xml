@@ -2,15 +2,11 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="donation" table="DONATION">
-        <id name="id" type="java.lang.Integer" column="ID" length="10" />
+	<class name="model.beans.donation.Donation" table="DONATION">
+        <id name="idDonation" type="java.lang.Integer" column="ID" length="10" />
         
-        <property name="idType" type="java.lang.Integer">
-            <column name="ID_TYPE" length="10" />
-        </property>
-        
-        <property name="donationType" type="java.lang.Integer">
-            <column name="DONATION_TYPE" length="1" />
+        <property name="typeDonation" type="string">
+            <column name="DONATION_TYPE" length="10" />
         </property>
         
         <property name="firstName" type="string">
@@ -29,7 +25,7 @@
             <column name="SIREN" length="20" />
         </property>
         
-        <property name="mail" type="string">
+        <property name="mailAddress" type="string">
             <column name="MAIL" length="255" />
         </property>
         
@@ -49,15 +45,15 @@
             <column name="CITY" length="255" />
         </property>
         
-        <property name="phone" type="string">
+        <property name="phoneNumber" type="string">
             <column name="PHONE" length="255" />
         </property>
         
-        <property name="amount" type="java.lang.Decimal">
+        <property name="value" type="java.lang.Double">
             <column name="AMOUNT" length="15" precision="2" />
         </property>
         
-        <property name="numberOfChildren" type="java.lang.Integer">
+        <property name="childrenNumber" type="java.lang.Integer">
             <column name="NUMBER_OF_CHILDREN" length="10" />
         </property>
         
@@ -69,7 +65,7 @@
             <column name="ATTACHED_FILE" length="255" />
         </property>
         
-        <property name="donationDate" type="date">
+        <property name="submitDate" type="date">
             <column name="DONATION_DATE" />
         </property>
         
@@ -77,16 +73,11 @@
             <column name="RECEIPT" length="255" />
         </property>
         
-        <property name="projectID" type="java.lang.Integer">
-            <column name="PROJECT_ID" length="10" />
-        </property>
+        <many-to-one name="project" column="PROJECT_ID" class="model.beans.project.Project" not-null="false"/>
         
-        <property name="SubprojectID" type="java.lang.Integer">
-            <column name="SUBPROJECT_ID" length="10" />
-        </property>
+        <many-to-one name="subProject" column="SUBPROJECT_ID" class="model.beans.project.SubProject" not-null="false"/>
         
-        <property name="profileID" type="java.lang.Integer">
-            <column name="PROFILE_ID" length="10" />
-        </property>
+        <many-to-one name="user" column="PROFILE_ID" class="model.beans.profile.User" not-null="false"/>
+        
     </class>
 </hibernate-mapping>

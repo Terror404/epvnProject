@@ -15,8 +15,8 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>BackOffice</servlet-name>
-    <url-pattern>/backOffice</url-pattern>
-    <url-pattern>/backoffice</url-pattern>
+    <url-pattern>/backOffice/do</url-pattern>
+    <url-pattern>/backoffice/consult</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>CreateDonation</servlet-name>

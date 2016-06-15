@@ -10,23 +10,27 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.NotSupportedException;
+import javax.transaction.SystemException;
 
 import model.beans.donation.Donation;
 import model.beans.profile.User;
 import model.beans.project.Project;
 import model.beans.project.SubProject;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Controller;
+import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Transactional;
+//import org.hibernate.service.ServiceRegistry;
+//import org.hibernate.service.ServiceRegistryBuilder;
 
 /**
  * Servlet implementation class CreateDonation
  */
-
-@Controller
+@Transactional
 public class CreateDonation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static SessionFactory sessionFactory;
+   // private static ServiceRegistry serviceRegistry;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -37,25 +41,41 @@ public class CreateDonation extends HttpServlet {
     /**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Transactional
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Init(request,response);
+		try {
+			Init(request,response);
+		} catch (NotSupportedException | SystemException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * @see HttpSer²vlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getRequestURI().equals("/epvnProject/donation/do")){
 			InsertCreateDonation(request,response);
 		}else if(request.getRequestURI().equals("/epvnProject/donation/init")){
-			Init(request,response);
+			try {
+				Init(request,response);
+			} catch (NotSupportedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SystemException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else if(request.getRequestURI().equals("/epvnProject/donation/newmember")){
 			BecomeMember(request,response);
 		}
 
 		
 	}
-	public void Init(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	@Transactional
+	public void Init(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, NotSupportedException, SystemException{
 		//TODO:si un user est connecté, rentrer ses informations par défaut
 		//TODO:récupérer la page projet dont l'on vient pour renseigner les champs par défaut
 		
@@ -259,9 +279,8 @@ public class CreateDonation extends HttpServlet {
 		
 		
 	}
-	
-	public void generateFiscalReceipt(){
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("./WebContent/WEB-INF/applicationContext.xml");
+	@Transactional
+	public void generateFiscalReceipt() throws NotSupportedException, SystemException{
 		
 	}
 
