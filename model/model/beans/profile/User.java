@@ -9,7 +9,7 @@ public class User {
 	private String lastName;
 	private String mailAddress;
 	private String password;
-	private Integer phoneNumber;
+	private String phoneNumber;
 	private Date creationDate;
 	private Integer adherent;
 	private Date dateAdherent;
@@ -17,6 +17,7 @@ public class User {
 	private String physicalAddress;
 	private String zipCode;
 	private String city;
+	private String country;
 	private String companyName;
 	private Integer sirenNum;
 	
@@ -56,10 +57,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Integer getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(Integer phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public Date getCreationDate() {
@@ -115,6 +116,12 @@ public class User {
 	}
 	public void setSirenNum(Integer sirenNum) {
 		this.sirenNum = sirenNum;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
 	}
 	
 
