@@ -30,13 +30,15 @@
     <div class="container">
       <h2><strong>Soutenir un projet</strong></h2>
       <p>Des explications...</p>
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Nom du projet">
+      <!--<div class="input-group">
+        <input id="search" type="text" class="form-control" placeholder="Nom du projet"/>
         <span class="input-group-btn">
           <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"/></button>
         </span>
-      </div><!-- /input-group -->
-      <div class="col-xs-12" style="height:30px;"></div>
+      </div>--><!-- /input-group -->
+      <p>
+        <a class="btn formbtn" href="" role="button">Rechercher un projet</a>
+      </p>
 
       <section>
         <article>

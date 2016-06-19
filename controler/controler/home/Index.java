@@ -35,18 +35,27 @@ public class Index extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		//get all the projects from the database
-		ArrayList projectsList = new ArrayList();
+ArrayList projectsList = new ArrayList();
 		
-		Project project= new Project();
-		project.setTitleProject("Titre du projet");
-		project.setGoal(1000);
-		project.setActualAchievedGoal(700);
+		Project project1= new Project();
+		project1.setTitleProject("Titre du projet 1");
+		project1.setGoal(1000);
+		project1.setActualAchievedGoal(700);
+		project1.setStatus(1);
+		project1.setPicturePath("../img/img1.jpg");
 		
-		projectsList.add(project);
-		projectsList.add(project);
-		projectsList.add(project);
-		projectsList.add(project);
-		projectsList.add(project);
+		Project project2 = new Project();
+		project2.setTitleProject("Titre du projet 2");
+		project2.setGoal(2000);
+		project2.setActualAchievedGoal(10);
+		project2.setStatus(0);
+		project2.setPicturePath("../img/img1.jpg");
+		
+		projectsList.add(project1);
+		projectsList.add(project1);
+		projectsList.add(project1);
+		projectsList.add(project2);
+		projectsList.add(project2);
 		
 		request.setAttribute("projectsList", projectsList);
 		
