@@ -24,7 +24,7 @@
 	<%@ include file="/jsp/header.jsp"%>
 
 	<div class="container">
-		<form id="createProjectForm" enctype="mutlipart/form-data">
+		<form id="createProjectForm" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-md-8">
 					<div>

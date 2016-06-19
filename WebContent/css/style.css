@@ -69,6 +69,7 @@ nav .container {
   background-color:#EAEAEA;
   border-radius: 5px;
   padding: 0px 5px 5px 5px;
+  margin: 0px 5px 5px 5px;
 }
 .align-center {
   text-align: center;
@@ -91,4 +92,13 @@ nav .container {
   position:static;
   height:300px;
   width:100%
+}
+.progress {
+	margin-top:10px;
+}
+.progress-bar {
+	background-color:#6cb874;
+}
+.btn-sub-project {
+	margin-bottom:10px
 }

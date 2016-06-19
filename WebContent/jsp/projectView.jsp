@@ -1,3 +1,5 @@
+<%@page import="model.beans.project.Project" %>
+<%@page import="model.beans.project.SubProject" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
@@ -26,12 +28,9 @@
           <div>
 	          <h2>
 	          	<strong>
-	          	<%@page import="model.beans.project.Project" %>
-	          	<%@page import="model.beans.project.SubProject" %>
 	          	<% 
 	            	Project project = (Project) request.getAttribute("project");
     				out.println(project.getTitleProject());
-	            	//out.println( attribut );
 	            %>
 	            </strong>
 	          </h2>
@@ -64,9 +63,15 @@
         			  "<h3>Sous-projets</h3>"        			  
           );
         	  for(SubProject subProject : project.getSubProjectList()){
-        		  out.println("<div class=\"sub-sub-container\">"+
+        		  out.println("<div class=\"sub-sub-container col-md-9\">"+
+        	  	  "<div class='col-md-6'>"+
                   "<h4>"+subProject.getTitle()+"</h4>"+
                   "<p>"+subProject.getDescription()+"</p>"+
+                  "</div><div class='col-md-6 align-center'>"+
+                  "<div class='progress'><div class='progress-bar' role='progressbar' aria-valuenow='"+Math.round(subProject.getActualAchievedGoal()/subProject.getGoal()*100)+"' aria-valuemin='0' aria-valuemax='100' style='width:"+Math.round(subProject.getActualAchievedGoal()/subProject.getGoal()*100)+"%;'>"+Math.round(subProject.getActualAchievedGoal()/subProject.getGoal()*100)+"%</div></div>"+
+                  "<p><strong>Dons : "+subProject.getActualAchievedGoal()+"/"+subProject.getGoal()+" euros</strong></p>"+
+                  "<a class='btn btn-sm formbtn btn-sub-project' href='/epvnProject/donation/init' role='button'>Soutenir ce sous-projet</a>"+
+                  "</div>"+
                 "</div>");
         	  }
         	  out.println("</div>");
@@ -90,7 +95,7 @@
           <div style="text-align:center">
           <div class="col-xs-12" style="height:15px;"></div>
           <div>
-            <img src="../img/img1.jpg" class="img-rounded" alt="Responsive image">
+            <img src="<%out.println(project.getPicturePath()); %>" class="img-rounded" alt="Responsive image">
           </div>
           <div class="col-xs-12" style="height:50px;"></div>
           <h3>Avancement du projet</h3>
@@ -99,7 +104,7 @@
 	            %>" class="dial">
           <div class="col-xs-12" style="height:20px;"></div>
           <p><strong>Total des dons : 
-          		<% 
+          		<%
 	            	out.println( project.getActualAchievedGoal() );
 	            	out.println( "/"+project.getGoal()+" euros");
 	            %></strong></p>
@@ -107,9 +112,6 @@
             <a class="btn btn-lg formbtn" href="/epvnProject/donation/init" role="button">Soutenir ce projet</a>
           </p>
           <div class="col-xs-12" style="height:50px;"></div>
-          <!--<div>
-            <img src="./img/map.png" class="img-rounded" alt="Responsive image">
-          </div>-->
           <div id="map_canvas"></div>
           <div class="col-xs-12" style="height:50px;"></div>
           </div>
@@ -135,7 +137,11 @@
             console.log("changed :" + $('.dial').val());
           }
         });
-        var location = new google.maps.LatLng(14.344490,107.980510);
+        <%String latLngStr = project.getLatLng();%>
+        var latLng ="<%=latLngStr%>";
+        console.log(latLng);
+        latLng = latLng.split("/");
+        var location = new google.maps.LatLng(latLng[0],latLng[1]);
         var map = new google.maps.Map(document.getElementById("map_canvas"), {
             zoom: 6,
             center: location,
