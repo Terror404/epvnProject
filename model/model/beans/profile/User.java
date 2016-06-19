@@ -9,7 +9,7 @@ public class User {
 	private String lastName;
 	private String mailAddress;
 	private String password;
-	private String phoneNumber;
+	private long phoneNumber;
 	private Date creationDate;
 	private Integer adherent;
 	private Date dateAdherent;
@@ -57,10 +57,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	public Date getCreationDate() {

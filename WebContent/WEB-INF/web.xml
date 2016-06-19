@@ -86,13 +86,26 @@
  <!-- REGISTER --> 
  
 	<servlet>
-		<servlet-name>createTable</servlet-name>
-		<servlet-class>database.createTable</servlet-class>
+		<servlet-name>Register</servlet-name>
+		<servlet-class>controler.register.Register</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>createTable</servlet-name>
-		<url-pattern>/database/createTable</url-pattern>
+		<servlet-name>Register</servlet-name>
+		<url-pattern>/user/inscription</url-pattern>
+	</servlet-mapping>
+	
+	 <!-- LOGIN --> 
+ 
+	<servlet>
+		<servlet-name>Connection</servlet-name>
+		<servlet-class>controler.connection.Connection</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Connection</servlet-name>
+		<url-pattern>/connection/login</url-pattern>
+		<url-pattern>/connection/destroy</url-pattern>
 	</servlet-mapping>
  
  
